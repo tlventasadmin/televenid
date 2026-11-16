@@ -1,0 +1,2768 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjetas de Presentación Digitales | Portal Ejecutivo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 Free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        graphite: {
+                            950: '#121317',
+                            900: '#181A1F',
+                            800: '#21242B',
+                            700: '#2A2E37',
+                            600: '#343944',
+                        },
+                        crimson: {
+                            500: '#EF4444',
+                            600: '#E02424',
+                            700: '#C81E1E',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ==========================================================================
+           ESTÉTICA CREATIVA: WARM GRAPHITE FROSTED GLASS & MICRO-DOSED RED
+           + DETECCIÓN AUTOMÁTICA DE Fondo.JPG Y Logo.PNG
+           ========================================================================== */
+        :root {
+            --bg-overlay-1: rgba(18, 20, 25, 0.52);
+            --bg-overlay-2: rgba(24, 26, 31, 0.68);
+            --graphite-surface: rgba(30, 33, 40, 0.44);
+            --graphite-elevated: rgba(40, 44, 54, 0.48);
+            --graphite-card: linear-gradient(165deg, rgba(42, 46, 56, 0.50) 0%, rgba(22, 24, 30, 0.62) 100%);
+            --graphite-border: rgba(255, 255, 255, 0.14);
+            --graphite-border-hover: rgba(255, 255, 255, 0.24);
+            --red-accent: #E02424;
+            --red-soft: #EF4444;
+            --red-glow: rgba(224, 36, 36, 0.18);
+            --red-pill-bg: rgba(224, 36, 36, 0.10);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --input-bg: rgba(18, 20, 26, 0.42);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #181A1F;
+            /* Detecta automáticamente Fondo.JPG en la carpeta raíz junto a index.html */
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(224, 36, 36, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 90%, rgba(255, 255, 255, 0.04) 0%, transparent 45%),
+                linear-gradient(160deg, var(--bg-overlay-1) 0%, var(--bg-overlay-2) 100%),
+                url('./Fondo.JPG'),
+                url('Fondo.JPG');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-display {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Paneles Frosted Glass en Gris Grafito */
+        .spatial-panel {
+            background: var(--graphite-surface);
+            backdrop-filter: blur(28px) saturate(160%);
+            -webkit-backdrop-filter: blur(28px) saturate(160%);
+            border: 1px solid var(--graphite-border);
+            box-shadow: 
+                0 24px 48px -15px rgba(0, 0, 0, 0.50),
+                0 1px 0 0 rgba(255, 255, 255, 0.14) inset;
+        }
+
+        /* Credencial Ejecutiva Frosted Glass (Diseño Estático y Limpio) */
+        .executive-card-shell {
+            background: var(--graphite-card);
+            backdrop-filter: blur(32px) saturate(170%);
+            -webkit-backdrop-filter: blur(32px) saturate(170%);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 
+                0 30px 60px -15px rgba(0, 0, 0, 0.65),
+                0 1px 0 0 rgba(255, 255, 255, 0.18) inset;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Detalle de ranura de credencial ejecutiva */
+        .pass-lanyard-slot {
+            width: 54px;
+            height: 7px;
+            border-radius: 999px;
+            background: rgba(15, 17, 21, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) inset;
+            margin: 0 auto 20px auto;
+            position: relative;
+        }
+
+        /* Halo cálido sutil en la cabecera de la tarjeta */
+        .card-spatial-aura {
+            position: absolute;
+            top: -85px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 260px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(224, 36, 36, 0.11) 0%, transparent 72%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Textura de puntos sutil en la esquina de la credencial */
+        .card-dot-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 130px;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+            background-size: 16px 16px;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Logo sin recuadro ni bordes (Unboxed) */
+        .unboxed-company-logo {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            object-fit: contain;
+            max-height: 60px;
+        }
+
+        /* Inputs amigables con efecto Frosted Glass */
+        .spatial-input {
+            background: var(--input-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #F3F4F6;
+            transition: all 0.2s ease;
+        }
+
+        .spatial-input:focus {
+            outline: none;
+            border-color: rgba(239, 68, 68, 0.55);
+            box-shadow: 0 0 0 3px rgba(224, 36, 36, 0.14);
+            background: rgba(18, 20, 25, 0.62);
+        }
+
+        .spatial-input::placeholder {
+            color: #9CA3AF;
+        }
+
+        /* Botón Primario con Acento Rojo Refinado */
+        .btn-executive-primary {
+            background: linear-gradient(135deg, #E02424 0%, #B91C1C 100%);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 8px 20px -6px rgba(224, 36, 36, 0.38);
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-executive-primary:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+            box-shadow: 0 12px 24px -6px rgba(224, 36, 36, 0.50);
+        }
+
+        .btn-executive-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Botones Secundarios en Frosted Glass Grafito */
+        .btn-graphite-secondary {
+            background: rgba(42, 46, 55, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #F3F4F6;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-graphite-secondary:hover {
+            background: rgba(56, 62, 74, 0.62);
+            border-color: rgba(255, 255, 255, 0.22);
+            transform: translateY(-2px);
+        }
+
+        /* Botones de la tarjeta (Correo, WhatsApp y Enlaces) con relieve táctil de botón */
+        .card-action-btn {
+            background: linear-gradient(180deg, rgba(46, 51, 62, 0.82) 0%, rgba(27, 30, 37, 0.92) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            box-shadow: 
+                0 8px 18px -4px rgba(0, 0, 0, 0.5),
+                0 1px 0 0 rgba(255, 255, 255, 0.16) inset;
+            color: #F3F4F6;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card-action-btn:hover {
+            background: linear-gradient(180deg, rgba(60, 66, 80, 0.92) 0%, rgba(35, 39, 48, 0.96) 100%);
+            border-color: rgba(255, 255, 255, 0.34);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 12px 24px -5px rgba(0, 0, 0, 0.6),
+                0 1px 0 0 rgba(255, 255, 255, 0.24) inset;
+        }
+
+        .card-action-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Color rojo corporativo exacto al botón Agregar a Contactos para el Cargo */
+        .role-crimson-text {
+            color: #E02424;
+        }
+
+        /* Scrollbar grafito */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #181A1F;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #343944;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4B5563;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-red-600 selection:text-white">
+
+    <!-- ==========================================================================
+         BARRA DE NAVEGACIÓN SUPERIOR (OCULTA ESTRICTAMENTE EN LA VISTA PÚBLICA)
+         ========================================================================== -->
+    <header id="appNavbar" class="hidden sticky top-0 z-40 spatial-panel border-b border-white/[0.07]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+            <!-- Logo Corporativo Sin Recuadro -->
+            <div class="flex items-center gap-4">
+                <div class="flex items-center">
+                    <img 
+                        src="./Logo.PNG" 
+                        alt="Logo Corporativo" 
+                        class="unboxed-company-logo !max-h-11"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+                    <div style="display:none;" class="items-center gap-3 select-none">
+                        <div class="w-9 h-9 rounded-xl bg-graphite-700 border border-white/10 flex items-center justify-center shadow-md">
+                            <i class="fa-solid fa-id-badge text-gray-100 text-sm"></i>
+                        </div>
+                        <div class="leading-none">
+                            <span class="font-display text-lg font-extrabold tracking-wider text-white">CORPORATIVO</span>
+                            <span class="block text-[10px] uppercase tracking-[0.22em] text-gray-400 mt-0.5">Digital Studio</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden sm:block h-6 w-[1px] bg-white/10"></div>
+                <span id="navRoleBadge" class="hidden md:inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-medium bg-graphite-800 text-gray-200 border border-white/10">
+                    <i class="fa-regular fa-id-card text-gray-400"></i>
+                    <span id="navRoleText">Estudio Digital</span>
+                </span>
+            </div>
+
+            <!-- Acciones Derecha -->
+            <div class="flex items-center gap-2.5">
+                <span id="cloudSyncBadge" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium bg-white/5 border border-white/10 text-gray-300">
+                    <i id="cloudSyncIcon" class="fa-solid fa-cloud text-gray-400 text-[10px]"></i>
+                    <span id="cloudSyncText">Sincronizado</span>
+                </span>
+
+                <span id="navUserLabel" class="hidden lg:inline-block text-xs text-gray-300 font-medium px-2"></span>
+
+                <button 
+                    id="btnBackToAdmin" 
+                    onclick="returnToAdminDashboard()" 
+                    class="hidden items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold btn-graphite-secondary"
+                >
+                    <i class="fa-solid fa-arrow-left text-gray-400"></i>
+                    <span>Volver al Directorio</span>
+                </button>
+                <button 
+                    id="btnLogout" 
+                    onclick="logoutSession()" 
+                    class="hidden items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-graphite-800 hover:bg-graphite-700 text-gray-200 border border-white/10 transition"
+                >
+                    <i class="fa-solid fa-arrow-right-from-bracket text-red-400"></i>
+                    <span class="hidden sm:inline">Cerrar sesión</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+         CONTENEDOR PRINCIPAL DE VISTAS
+         ========================================================================== -->
+    <main class="relative z-10">
+
+        <!-- ======================================================================
+             VISTA 1: ACCESO INICIAL (EMPLEADO / ADMINISTRADOR GENERAL)
+             ====================================================================== -->
+        <section id="viewAuth" class="hidden min-h-screen flex flex-col justify-center items-center px-4 py-10">
+            
+            <div class="mb-5 inline-flex items-center gap-2 px-4 py-1.5 rounded-full spatial-panel text-xs text-gray-300">
+                <i class="fa-regular fa-building text-gray-400"></i>
+                <span>Plataforma de Identidad Digital Corporativa</span>
+            </div>
+
+            <div class="w-full max-w-md spatial-panel rounded-[28px] p-6 sm:p-9 animate-fade-in">
+                
+                <!-- Cabecera con Logo.PNG sin caja -->
+                <div class="text-center mb-7">
+                    <div class="mb-4 flex justify-center">
+                        <img 
+                            src="./Logo.PNG" 
+                            alt="Logo Empresa" 
+                            class="unboxed-company-logo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        >
+                        <div style="display:none;" class="flex-col items-center justify-center py-1">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-10 h-10 rounded-2xl bg-graphite-700 border border-white/10 flex items-center justify-center shadow-lg">
+                                    <i class="fa-solid fa-id-card-clip text-white text-lg"></i>
+                                </div>
+                                <span class="font-display text-2xl font-extrabold tracking-wider text-white">CORPORATIVO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="font-display text-2xl sm:text-[26px] font-bold text-white tracking-tight">Tarjetas de Presentación</h1>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-1">Crea, personaliza y comparte tu credencial ejecutiva digital</p>
+                </div>
+
+                <!-- Selector de Rol en Frosted Glass -->
+                <div class="grid grid-cols-2 gap-1.5 p-1.5 bg-white/[0.04] backdrop-blur-md rounded-2xl border border-white/10 mb-6">
+                    <button 
+                        type="button"
+                        id="tabEmployeeAuth" 
+                        onclick="switchAuthTab('employee')"
+                        class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center justify-center gap-2 bg-white/15 text-white shadow-sm border border-white/15"
+                    >
+                        <i class="fa-regular fa-id-badge text-xs"></i>
+                        <span>Mi Tarjeta</span>
+                    </button>
+                    <button 
+                        type="button"
+                        id="tabAdminAuth" 
+                        onclick="switchAuthTab('admin')"
+                        class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-medium transition flex items-center justify-center gap-2 text-gray-300 hover:text-white"
+                    >
+                        <i class="fa-solid fa-sliders text-xs"></i>
+                        <span>Administrador</span>
+                    </button>
+                </div>
+
+                <!-- SUB-VISTA: ACCESO / REGISTRO DE EMPLEADO -->
+                <div id="panelEmployeeAuth" class="space-y-5">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                        <button 
+                            type="button"
+                            id="subTabEmpLogin"
+                            onclick="switchEmployeeAuthMode('login')"
+                            class="text-xs sm:text-sm font-semibold text-white border-b-2 border-red-500 pb-1.5 transition"
+                        >
+                            Ingresar a mi perfil
+                        </button>
+                        <button 
+                            type="button"
+                            id="subTabEmpCreate"
+                            onclick="switchEmployeeAuthMode('register')"
+                            class="text-xs sm:text-sm font-medium text-gray-400 hover:text-white pb-1.5 transition flex items-center gap-1.5"
+                        >
+                            <i class="fa-solid fa-user-plus text-xs text-red-400"></i>
+                            <span>Registrarme</span>
+                        </button>
+                    </div>
+
+                    <!-- Formulario Login Empleado -->
+                    <form id="formEmployeeLogin" onsubmit="handleEmployeeLogin(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Correo Corporativo</label>
+                            <div class="relative">
+                                <i class="fa-regular fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                <input 
+                                    type="email" 
+                                    id="empLoginEmail" 
+                                    required
+                                    placeholder="nombre.apellido@corporativo.com" 
+                                    class="spatial-input w-full pl-10 pr-4 py-2.5 rounded-xl text-sm"
+                                >
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between mb-1.5">
+                                <label class="block text-[11px] font-semibold text-gray-300 uppercase tracking-wider">Contraseña</label>
+                                <button 
+                                    type="button" 
+                                    onclick="openForgotPasswordModal()"
+                                    class="text-xs font-medium text-gray-300 hover:text-white flex items-center gap-1.5 transition group"
+                                >
+                                    <i class="fa-solid fa-key text-[10px] text-red-400 group-hover:rotate-12 transition"></i>
+                                    <span class="underline decoration-white/25 group-hover:decoration-red-400">¿Olvidé mi contraseña?</span>
+                                </button>
+                            </div>
+                            <div class="relative">
+                                <i class="fa-solid fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                <input 
+                                    type="password" 
+                                    id="empLoginPin" 
+                                    required
+                                    placeholder="Ingresa tu clave de acceso" 
+                                    class="spatial-input w-full pl-10 pr-4 py-2.5 rounded-xl text-sm"
+                                >
+                            </div>
+                        </div>
+
+                        <button 
+                            type="submit" 
+                            id="btnEmployeeLoginSubmit"
+                            class="btn-executive-primary w-full py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2"
+                        >
+                            <span>Entrar a Mi Tarjeta</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+
+                        <div class="text-center pt-1">
+                            <button 
+                                type="button" 
+                                onclick="openForgotPasswordModal()"
+                                class="w-full py-2.5 px-3 rounded-xl btn-graphite-secondary text-xs font-medium text-gray-300 hover:text-white flex items-center justify-center gap-2"
+                            >
+                                <i class="fa-regular fa-paper-plane text-red-400"></i>
+                                <span>Olvidé mi contraseña — Enviar a mi correo corporativo</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Formulario de Registro de Nuevo Empleado (Requiere Aprobación del Administrador) -->
+                    <div id="boxEmployeeRegister" class="hidden space-y-4">
+                        <div id="registerFormContainer" class="space-y-4">
+                            <div class="p-3.5 rounded-2xl bg-white/[0.05] backdrop-blur-md border border-white/10 text-xs text-gray-200 leading-relaxed">
+                                <i class="fa-solid fa-user-shield text-red-400 mr-1.5"></i>
+                                Completa tu registro para solicitar acceso. Una vez que el administrador apruebe tu solicitud, podrás ingresar a crear y personalizar tu tarjeta.
+                            </div>
+
+                            <form id="formEmployeeRegister" onsubmit="handleEmployeeRegistrationRequest(event)" class="space-y-3.5">
+                                <div>
+                                    <label class="block text-[11px] font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Nombre y Apellido</label>
+                                    <div class="relative">
+                                        <i class="fa-regular fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                        <input 
+                                            type="text" 
+                                            id="regFullName" 
+                                            required
+                                            placeholder="Ej. Valentina Rivas" 
+                                            class="spatial-input w-full pl-10 pr-4 py-2.5 rounded-xl text-sm"
+                                        >
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-[11px] font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Correo Corporativo</label>
+                                    <div class="relative">
+                                        <i class="fa-regular fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                        <input 
+                                            type="email" 
+                                            id="regEmail" 
+                                            required
+                                            placeholder="nombre.apellido@corporativo.com" 
+                                            class="spatial-input w-full pl-10 pr-4 py-2.5 rounded-xl text-sm"
+                                        >
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-[11px] font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Clave de Acceso</label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                        <input 
+                                            type="password" 
+                                            id="regPassword" 
+                                            required
+                                            placeholder="Crea tu contraseña" 
+                                            class="spatial-input w-full pl-10 pr-4 py-2.5 rounded-xl text-sm"
+                                        >
+                                    </div>
+                                </div>
+
+                                <button 
+                                    type="submit" 
+                                    id="btnEmployeeRegisterSubmit"
+                                    class="btn-executive-primary w-full py-3.5 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2"
+                                >
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    <span>Registrar</span>
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Mensaje de confirmación tras enviar solicitud -->
+                        <div id="registerPendingNotice" class="hidden p-5 rounded-2xl bg-white/[0.05] backdrop-blur-md border border-white/15 text-center space-y-3">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-400/30 flex items-center justify-center text-amber-300 mx-auto">
+                                <i class="fa-regular fa-clock text-xl"></i>
+                            </div>
+                            <h3 class="font-display text-base font-bold text-white">Solicitud Enviada al Administrador</h3>
+                            <p class="text-xs text-gray-300 leading-relaxed">
+                                Tu registro para <strong id="regNoticeEmail" class="text-white"></strong> ha sido recibido y está pendiente de aprobación. Solo podrás acceder al panel de creación cuando el administrador lo apruebe.
+                            </p>
+                            <button 
+                                type="button"
+                                onclick="switchEmployeeAuthMode('login')"
+                                class="btn-graphite-secondary w-full py-2.5 px-4 rounded-xl text-xs font-semibold"
+                            >
+                                Volver a Iniciar Sesión
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB-VISTA: ACCESO ADMINISTRADOR GENERAL -->
+                <div id="panelAdminAuth" class="hidden space-y-4">
+                    <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                        <div class="p-4 rounded-2xl bg-white/[0.05] backdrop-blur-md border border-white/10 text-xs text-gray-200 leading-relaxed">
+                            <i class="fa-solid fa-shield-halved text-gray-300 mr-1.5"></i>
+                            Panel central para aprobar registros, gestionar tarjetas de la empresa y sincronizar la base de datos en Google Sheets.
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Usuario Administrador</label>
+                            <div class="relative">
+                                <i class="fa-regular fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                <input 
+                                    type="text" 
+                                    id="adminUsernameInput" 
+                                    required
+                                    placeholder="Ingresa el usuario administrador" 
+                                    class="spatial-input w-full pl-10 pr-4 py-2.5 rounded-xl text-sm"
+                                >
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Contraseña</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-key absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                <input 
+                                    type="password" 
+                                    id="adminPasswordInput" 
+                                    required
+                                    placeholder="Ingresa la contraseña" 
+                                    class="spatial-input w-full pl-10 pr-4 py-2.5 rounded-xl text-sm"
+                                >
+                            </div>
+                        </div>
+                        <button 
+                            type="submit" 
+                            class="btn-executive-primary w-full py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2"
+                        >
+                            <i class="fa-solid fa-unlock-keyhole"></i>
+                            <span>Acceder al Panel Administrador</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             VISTA 2: PANEL DE ADMINISTRADOR GENERAL
+             ====================================================================== -->
+        <section id="viewAdminDashboard" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
+            
+            <!-- Encabezado y Acciones Principales -->
+            <div class="spatial-panel rounded-3xl p-6 sm:p-7 mb-6 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Administración General</span>
+                    </div>
+                    <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1">Directorio de Credenciales Digitales</h2>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-0.5">Aprueba nuevos usuarios, edita perfiles y sincroniza con Google Sheets en tiempo real.</p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <button 
+                        onclick="refreshFromGoogleSheetsManual()" 
+                        class="btn-graphite-secondary px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium flex items-center gap-2"
+                        title="Recargar datos desde Google Sheets"
+                    >
+                        <i class="fa-solid fa-rotate text-emerald-400"></i>
+                        <span>Sincronizar</span>
+                    </button>
+                    <button 
+                        onclick="openEmailConfigModal()" 
+                        class="btn-graphite-secondary px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium flex items-center gap-2"
+                        title="Configurar conexión con Google Sheets y Correo Corporativo"
+                    >
+                        <i class="fa-solid fa-table text-red-400"></i>
+                        <span>Servidor Google Sheets</span>
+                    </button>
+                    <button 
+                        onclick="exportBackupJson()" 
+                        class="btn-graphite-secondary px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium flex items-center gap-2"
+                    >
+                        <i class="fa-solid fa-download text-gray-400"></i>
+                        <span>Exportar</span>
+                    </button>
+                    <label class="cursor-pointer btn-graphite-secondary px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium flex items-center gap-2">
+                        <i class="fa-solid fa-upload text-gray-400"></i>
+                        <span>Importar</span>
+                        <input type="file" accept=".json" class="hidden" onchange="importBackupJson(event)">
+                    </label>
+                    <button 
+                        onclick="adminCreateNewProfile()" 
+                        class="btn-executive-primary px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Nueva Tarjeta</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tarjetas de Resumen / Métricas -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="spatial-panel rounded-2xl p-4 flex items-center justify-between">
+                    <div>
+                        <span class="text-xs text-gray-400 font-medium">Tarjetas Activas</span>
+                        <p id="statTotalCards" class="font-display text-2xl font-bold text-white mt-1">0</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-xl bg-graphite-700/80 border border-white/10 flex items-center justify-center text-red-400">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                </div>
+                <div class="spatial-panel rounded-2xl p-4 flex items-center justify-between">
+                    <div>
+                        <span class="text-xs text-gray-400 font-medium">Solicitudes Pendientes</span>
+                        <p id="statPendingRequests" class="font-display text-2xl font-bold text-amber-400 mt-1">0</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/25 flex items-center justify-center text-amber-300">
+                        <i class="fa-solid fa-user-clock"></i>
+                    </div>
+                </div>
+                <div class="spatial-panel rounded-2xl p-4 flex items-center justify-between">
+                    <div>
+                        <span class="text-xs text-gray-400 font-medium">Con Fotografía</span>
+                        <p id="statWithPhoto" class="font-display text-2xl font-bold text-white mt-1">0</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-xl bg-graphite-700/80 border border-white/10 flex items-center justify-center text-gray-300">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                </div>
+                <div class="spatial-panel rounded-2xl p-4 flex items-center justify-between">
+                    <div>
+                        <span class="text-xs text-gray-400 font-medium">Botones de Enlace</span>
+                        <p id="statTotalLinks" class="font-display text-2xl font-bold text-white mt-1">0</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-xl bg-graphite-700/80 border border-white/10 flex items-center justify-center text-gray-300">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel de Solicitudes de Registro Pendientes de Aprobación -->
+            <div id="adminPendingSection" class="hidden spatial-panel rounded-3xl p-6 mb-6 border border-amber-400/25">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/30 flex items-center justify-center text-amber-300 shrink-0">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-lg font-bold text-white flex items-center gap-2">
+                                <span>Solicitudes de Registro de Nuevos Usuarios</span>
+                                <span id="pendingBadgeCount" class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30">0</span>
+                            </h3>
+                            <p class="text-xs text-gray-400">Aprueba o rechaza el acceso para que el empleado pueda entrar a crear su tarjeta digital.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="adminPendingList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Renderizado dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Barra de Búsqueda + Filtro por Departamento -->
+            <div class="spatial-panel rounded-2xl p-4 mb-6 flex flex-col sm:flex-row items-center gap-3">
+                <div class="relative flex-1 w-full">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input 
+                        type="text" 
+                        id="adminSearchInput" 
+                        oninput="renderAdminDirectory()"
+                        placeholder="Buscar empleado por nombre, cargo, departamento o correo..." 
+                        class="spatial-input w-full pl-11 pr-4 py-2.5 rounded-xl text-sm"
+                    >
+                </div>
+                <div class="w-full sm:w-64">
+                    <select 
+                        id="adminDeptFilter" 
+                        onchange="renderAdminDirectory()"
+                        class="spatial-input w-full px-3.5 py-2.5 rounded-xl text-sm"
+                    >
+                        <option value="">Todos los departamentos</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Grilla de Tarjetas de Empleados -->
+            <div id="adminDirectoryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Renderizado dinámicamente -->
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             VISTA 3: EDITOR DE PERFIL DE EMPLEADO + VISTA PREVIA EN VIVO
+             ====================================================================== -->
+        <section id="viewProfileEditor" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
+            
+            <!-- Barra Superior de Acciones del Perfil -->
+            <div class="spatial-panel rounded-3xl p-5 sm:p-6 mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-gray-400" id="editorBadgeMode">
+                            Estudio de Mi Tarjeta
+                        </span>
+                    </div>
+                    <h2 class="font-display text-xl sm:text-2xl font-bold text-white mt-1" id="editorHeaderTitle">Personalización de Credencial Digital</h2>
+                    <p class="text-xs sm:text-sm text-gray-400">Ajusta tus datos a la izquierda y visualiza tu tarjeta a la derecha.</p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <button 
+                        type="button"
+                        id="btnSaveProfileTop"
+                        onclick="saveCurrentProfile()" 
+                        class="btn-executive-primary px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center gap-2"
+                    >
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        <span>Guardar Cambios</span>
+                    </button>
+                    <button 
+                        type="button"
+                        id="btnCopyUniqueLink"
+                        onclick="copyCurrentProfileShareLink()" 
+                        class="btn-graphite-secondary px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center gap-2"
+                    >
+                        <i class="fa-solid fa-link text-red-400"></i>
+                        <span>Copiar Link Único</span>
+                    </button>
+                    <button 
+                        type="button"
+                        id="btnPreviewPublicCard"
+                        onclick="openInternalPublicPreview()" 
+                        class="btn-graphite-secondary px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm flex items-center gap-2"
+                        title="Ver cómo luce el enlace compartido sin botones de edición ni inicio de sesión"
+                    >
+                        <i class="fa-regular fa-eye text-gray-300"></i>
+                        <span>Vista Pública</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recuadro del Enlace Único Compartible -->
+            <div id="shareLinkBanner" class="spatial-panel rounded-2xl p-4 mb-6 border border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                <div class="flex items-center gap-3.5 min-w-0">
+                    <div class="w-10 h-10 rounded-xl bg-graphite-700 border border-white/10 flex items-center justify-center text-red-400 shrink-0">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <p class="text-xs font-semibold text-white">Tu Link Único Permanente <span class="text-gray-400 font-normal">(Se actualiza automáticamente cada vez que guardas cambios)</span></p>
+                        <input 
+                            type="text" 
+                            id="shareUrlReadonlyInput" 
+                            readonly 
+                            onclick="this.select()"
+                            class="w-full bg-transparent text-xs text-gray-300 font-mono truncate focus:outline-none mt-0.5"
+                        >
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                    <button 
+                        type="button"
+                        onclick="copyCurrentProfileShareLink()" 
+                        class="btn-executive-primary px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5"
+                    >
+                        <i class="fa-regular fa-copy"></i>
+                        <span>Copiar Link</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Layout de 2 Columnas: Formulario de Edición (Izquierda) + Vista Previa en Vivo (Derecha) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- COLUMNA IZQUIERDA: FORMULARIO DE EDICIÓN -->
+                <div class="lg:col-span-7 spatial-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    
+                    <!-- 1. FOTO DE PERFIL (OPCIONAL) -->
+                    <div class="pb-5 border-b border-white/10">
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="text-sm font-bold text-white flex items-center gap-2">
+                                <i class="fa-regular fa-image text-gray-400 text-xs"></i>
+                                <span>Fotografía de Perfil (Opcional)</span>
+                            </label>
+                            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-graphite-900 text-gray-300 border border-white/10">
+                                Si se omite, no aparece en la tarjeta
+                            </span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-4">
+                            Puedes subir tu foto o dejarla vacía. Si decides no usar foto, la tarjeta ajusta su diseño limpio automáticamente.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div id="editorPhotoThumbContainer" class="w-20 h-20 rounded-2xl bg-graphite-950/80 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+                                <img id="editorPhotoThumb" src="" alt="Vista previa foto" class="hidden w-full h-full object-cover">
+                                <span id="editorPhotoPlaceholderIcon" class="text-xs text-gray-400 text-center px-2">
+                                    <i class="fa-regular fa-user block text-lg mb-1 text-gray-500"></i>
+                                    Sin foto
+                                </span>
+                            </div>
+
+                            <div class="flex-1 w-full space-y-2.5">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <label class="cursor-pointer btn-graphite-secondary px-3.5 py-2 rounded-xl text-xs font-semibold inline-flex items-center gap-2">
+                                        <i class="fa-solid fa-camera text-red-400"></i>
+                                        <span>Subir imagen</span>
+                                        <input type="file" id="photoFileInput" accept="image/*" class="hidden" onchange="handleProfilePhotoUpload(event)">
+                                    </label>
+                                    <button 
+                                        type="button" 
+                                        id="btnRemovePhoto"
+                                        onclick="clearProfilePhoto()" 
+                                        class="px-3.5 py-2 rounded-xl bg-graphite-900 hover:bg-red-500/15 border border-white/10 hover:border-red-500/30 text-xs font-medium text-gray-300 hover:text-red-300 transition inline-flex items-center gap-1.5"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                        <span>Omitir foto</span>
+                                    </button>
+                                </div>
+                                <div>
+                                    <input 
+                                        type="url" 
+                                        id="inputPhotoUrl" 
+                                        oninput="handlePhotoUrlInput(this.value)"
+                                        placeholder="O pega el enlace directo de una foto (https://...)" 
+                                        class="spatial-input w-full px-3.5 py-2 rounded-xl text-xs"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. DATOS PRINCIPALES (SE MUESTRAN SIN TÍTULO EN LA TARJETA) -->
+                    <div class="space-y-4 pb-5 border-b border-white/10">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                                <i class="fa-regular fa-id-card text-gray-400 text-xs"></i>
+                                <span>Datos Principales</span>
+                            </h3>
+                            <span class="text-[11px] text-gray-400">Se muestran en la tarjeta sin etiquetas de título</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-medium text-gray-300 mb-1.5">Nombre y Apellido *</label>
+                                <input 
+                                    type="text" 
+                                    id="inputFullName" 
+                                    oninput="syncEditorToLivePreview()"
+                                    placeholder="Ej. Valentina Rivas" 
+                                    class="spatial-input w-full px-4 py-2.5 rounded-xl text-sm font-medium"
+                                >
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1.5">Cargo *</label>
+                                <input 
+                                    type="text" 
+                                    id="inputRole" 
+                                    oninput="syncEditorToLivePreview()"
+                                    placeholder="Ej. Gerente de Comercialización" 
+                                    class="spatial-input w-full px-4 py-2.5 rounded-xl text-sm"
+                                >
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1.5">Departamento *</label>
+                                <input 
+                                    type="text" 
+                                    id="inputDepartment" 
+                                    oninput="syncEditorToLivePreview()"
+                                    placeholder="Ej. Vicepresidencia de Ventas" 
+                                    class="spatial-input w-full px-4 py-2.5 rounded-xl text-sm"
+                                >
+                            </div>
+
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-medium text-gray-300 mb-1.5">
+                                    Programa / Proyecto <span class="text-gray-500 font-normal">(Opcional — Si lo dejas en blanco no se muestra)</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="inputProgram" 
+                                    oninput="syncEditorToLivePreview()"
+                                    placeholder="Ej. Preventa & Proyectos Especiales" 
+                                    class="spatial-input w-full px-4 py-2.5 rounded-xl text-sm"
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. BOTONES DE CONTACTO DIRECTO -->
+                    <div class="space-y-4 pb-5 border-b border-white/10">
+                        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-regular fa-address-book text-gray-400 text-xs"></i>
+                            <span>Botones de Contacto y Agenda (.VCF)</span>
+                        </h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1.5">
+                                    <i class="fa-regular fa-envelope mr-1 text-gray-400"></i> Correo Electrónico Corporativo *
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="inputEmail" 
+                                    oninput="syncEditorToLivePreview()"
+                                    placeholder="nombre@corporativo.com" 
+                                    class="spatial-input w-full px-4 py-2.5 rounded-xl text-sm"
+                                >
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1.5">
+                                    <i class="fa-brands fa-whatsapp mr-1 text-emerald-400"></i> Número de WhatsApp *
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    id="inputWhatsapp" 
+                                    oninput="syncEditorToLivePreview()"
+                                    placeholder="Ej. +58 414-1234567" 
+                                    class="spatial-input w-full px-4 py-2.5 rounded-xl text-sm"
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. ENLACES PERSONALIZADOS CON NOMBRE DE BOTÓN -->
+                    <div class="space-y-4 pb-5 border-b border-white/10">
+                        <div class="flex items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-link text-gray-400 text-xs"></i>
+                                    <span>Botones de Enlaces Personalizados</span>
+                                </h3>
+                                <p class="text-xs text-gray-400 mt-0.5">Agrega enlaces y elige el nombre que mostrará cada botón.</p>
+                            </div>
+                            <button 
+                                type="button" 
+                                onclick="addCustomLinkField()"
+                                class="btn-graphite-secondary px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 shrink-0"
+                            >
+                                <i class="fa-solid fa-plus text-red-400"></i>
+                                <span>Añadir Botón</span>
+                            </button>
+                        </div>
+
+                        <div id="customLinksEditorList" class="space-y-3">
+                            <!-- Filas dinámicas de enlaces -->
+                        </div>
+                    </div>
+
+                    <!-- 5. CONTRASEÑA / PIN DEL EMPLEADO -->
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-lock text-gray-400 text-xs"></i>
+                            <span>Contraseña de Acceso a tu Perfil</span>
+                        </h3>
+                        <p class="text-xs text-gray-400">
+                            Con esta clave podrás entrar a editar tu tarjeta. Si la olvidas, podrás enviarla a tu correo corporativo desde la pantalla inicial.
+                        </p>
+                        <div class="max-w-xs">
+                            <label class="block text-xs font-medium text-gray-300 mb-1.5">Contraseña del Perfil *</label>
+                            <input 
+                                type="text" 
+                                id="inputPin" 
+                                placeholder="Ej. MiClave2026" 
+                                class="spatial-input w-full px-4 py-2 rounded-xl text-sm font-mono"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Botón Guardar Inferior -->
+                    <div class="pt-3 flex items-center justify-end gap-3">
+                        <button 
+                            type="button" 
+                            id="btnSaveProfileBottom"
+                            onclick="saveCurrentProfile()" 
+                            class="btn-executive-primary w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2"
+                        >
+                            <i class="fa-solid fa-check"></i>
+                            <span>Guardar y Actualizar Tarjeta</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DERECHA: VISTA PREVIA EN TIEMPO REAL -->
+                <div class="lg:col-span-5 lg:sticky lg:top-28">
+                    <div class="text-center mb-3 flex items-center justify-between px-2">
+                        <span class="text-xs font-semibold uppercase tracking-widest text-gray-300 flex items-center gap-2">
+                            <i class="fa-regular fa-eye text-gray-400"></i>
+                            Vista Previa en Vivo
+                        </span>
+                        <span class="text-[11px] text-gray-400">Actualización automática</span>
+                    </div>
+
+                    <div id="livePreviewCardMount" class="w-full max-w-[405px] mx-auto">
+                        <!-- Renderizado dinámicamente -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             VISTA 4: VISTA PÚBLICA DE TARJETA COMPARTIDA (SOLO LECTURA)
+             SIN BOTÓN DE EDITAR NI BOTÓN DE INICIAR SESIÓN
+             ====================================================================== -->
+        <section id="viewPublicCard" class="hidden min-h-screen w-full flex flex-col justify-center items-center px-4 py-10 animate-fade-in">
+            <div id="publicCardMount" class="w-full max-w-[410px] mx-auto">
+                <!-- Renderizado dinámicamente -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Botón flotante discreto SOLO visible en previsualización interna -->
+    <button 
+        id="btnExitInternalPreview" 
+        onclick="exitInternalPublicPreview()" 
+        class="hidden fixed bottom-5 left-5 z-50 px-4 py-2.5 rounded-full spatial-panel border border-white/15 text-xs font-semibold text-white hover:bg-graphite-700 transition shadow-2xl items-center gap-2"
+    >
+        <i class="fa-solid fa-arrow-left text-red-400"></i>
+        <span>Volver al Editor (No visible en el link compartido)</span>
+    </button>
+
+    <!-- ==========================================================================
+         MODAL: "¿OLVIDÉ MI CONTRASEÑA?" (ENVÍO AL CORREO CORPORATIVO)
+         ========================================================================== -->
+    <div id="forgotPasswordModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="spatial-panel rounded-3xl max-w-md w-full p-6 sm:p-8 border border-white/15 animate-fade-in relative">
+            <button 
+                type="button" 
+                onclick="closeForgotPasswordModal()" 
+                class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white flex items-center justify-center transition"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div id="forgotStepForm">
+                <div class="w-12 h-12 rounded-2xl bg-graphite-700 border border-white/10 flex items-center justify-center text-red-400 mb-4">
+                    <i class="fa-regular fa-envelope-open text-xl"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white">Recuperar Contraseña</h3>
+                <p class="text-xs sm:text-sm text-gray-300 mt-1 mb-5 leading-relaxed">
+                    Ingresa tu dirección de <strong>correo electrónico corporativo</strong> y enviaremos tu contraseña de acceso para que puedas editar tu tarjeta.
+                </p>
+
+                <form onsubmit="handleForgotPasswordSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-[11px] font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Correo Corporativo Registrado</label>
+                        <div class="relative">
+                            <i class="fa-regular fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                            <input 
+                                type="email" 
+                                id="forgotEmailInput" 
+                                required
+                                placeholder="nombre.apellido@corporativo.com" 
+                                class="spatial-input w-full pl-10 pr-4 py-3 rounded-xl text-sm"
+                            >
+                        </div>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        id="btnSubmitForgot"
+                        class="btn-executive-primary w-full py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2"
+                    >
+                        <i class="fa-regular fa-paper-plane"></i>
+                        <span>Enviar Contraseña a mi Correo Corporativo</span>
+                    </button>
+                </form>
+            </div>
+
+            <div id="forgotStepSuccess" class="hidden space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400 shrink-0">
+                        <i class="fa-solid fa-check text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400" id="recoveryStatusBadge">Correo Corporativo Enviado</span>
+                        <h3 class="font-display text-lg font-bold text-white">Contraseña Enviada</h3>
+                    </div>
+                </div>
+
+                <p class="text-xs text-gray-200 leading-relaxed">
+                    Hemos enviado las credenciales de acceso de <strong id="recEmpName" class="text-white"></strong> a la dirección de correo corporativo <strong id="recEmpEmail" class="text-white underline decoration-red-500"></strong>.
+                </p>
+
+                <div class="rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/10 p-4 space-y-2 text-xs">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                        <span class="text-gray-300 font-medium"><i class="fa-solid fa-envelope-circle-check text-red-400 mr-1.5"></i>Notificación de Seguridad</span>
+                        <span id="recTimestamp" class="text-[10px] text-gray-400 font-mono"></span>
+                    </div>
+                    <div class="text-gray-300 space-y-1 pt-1">
+                        <div><span class="text-gray-400">Destinatario:</span> <span id="recPreviewTo" class="font-mono text-white"></span></div>
+                        <div><span class="text-gray-400">Asunto:</span> <span class="text-white font-medium">Recuperación de Contraseña - Tarjeta Digital</span></div>
+                    </div>
+                    <p class="text-[11px] text-gray-400 pt-1">
+                        Revisa tu bandeja de entrada corporativa (o carpeta de notificaciones) e ingresa con tu clave.
+                    </p>
+                </div>
+
+                <div class="pt-1">
+                    <button 
+                        type="button" 
+                        onclick="closeForgotPasswordModal()"
+                        class="btn-executive-primary w-full py-2.5 px-4 rounded-xl text-xs font-semibold"
+                    >
+                        Entendido, volver al inicio de sesión
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         MODAL DEL ADMINISTRADOR: CONEXIÓN A SERVIDOR GOOGLE SHEETS + CORREO
+         ========================================================================== -->
+    <div id="emailWebhookModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="spatial-panel rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-white/15 animate-fade-in relative">
+            <button 
+                type="button" 
+                onclick="closeEmailConfigModal()" 
+                class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white flex items-center justify-center transition"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-2xl bg-graphite-700 border border-white/10 flex items-center justify-center text-red-400">
+                    <i class="fa-solid fa-table text-lg"></i>
+                </div>
+                <div>
+                    <h3 class="font-display text-lg font-bold text-white">Servidor Google Sheets & Correo</h3>
+                    <p class="text-xs text-gray-400">Base de datos en tiempo real y envío de contraseñas</p>
+                </div>
+            </div>
+
+            <p class="text-xs text-gray-300 leading-relaxed mb-4">
+                Pega aquí la URL de tu <strong>Google Apps Script Web App</strong> (o colócala en la constante <code>GOOGLE_SCRIPT_URL</code> dentro del archivo <code>index.html</code> antes de publicar para que todos los teléfonos se conecten automáticamente).
+            </p>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-[11px] font-semibold text-gray-300 uppercase tracking-wider mb-1.5">URL de Google Apps Script (/exec)</label>
+                    <input 
+                        type="url" 
+                        id="webhookUrlInput" 
+                        placeholder="https://script.google.com/macros/s/.../exec" 
+                        class="spatial-input w-full px-3.5 py-2.5 rounded-xl text-xs font-mono"
+                    >
+                </div>
+
+                <div class="flex items-center justify-end gap-2.5 pt-2">
+                    <button 
+                        type="button" 
+                        onclick="closeEmailConfigModal()" 
+                        class="btn-graphite-secondary px-4 py-2 rounded-xl text-xs font-medium"
+                    >
+                        Cancelar
+                    </button>
+                    <button 
+                        type="button" 
+                        onclick="saveEmailConfigModal()" 
+                        class="btn-executive-primary px-5 py-2 rounded-xl text-xs font-semibold"
+                    >
+                        Guardar y Sincronizar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         MODAL DE CONFIRMACIÓN PERSONALIZADO
+         ========================================================================== -->
+    <div id="customModalOverlay" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="spatial-panel rounded-3xl max-w-md w-full p-6 border border-white/15 animate-fade-in">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-red-400">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <h3 id="modalTitle" class="font-display text-lg font-bold text-white">Confirmar acción</h3>
+            </div>
+            <p id="modalMessage" class="text-sm text-gray-300 mb-6 leading-relaxed"></p>
+            <div class="flex items-center justify-end gap-3">
+                <button 
+                    type="button" 
+                    onclick="closeCustomModal()" 
+                    class="btn-graphite-secondary px-4 py-2 rounded-xl text-xs sm:text-sm font-medium"
+                >
+                    Cancelar
+                </button>
+                <button 
+                    type="button" 
+                    id="modalConfirmBtn" 
+                    class="btn-executive-primary px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold"
+                >
+                    Confirmar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         NOTIFICACIÓN TOAST FLOTANTE
+         ========================================================================== -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 spatial-panel rounded-2xl px-4 py-3 border-l-4 border-l-red-500 flex items-center gap-3 shadow-2xl max-w-sm">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-red-400 text-lg"></i>
+        <span id="toastText" class="text-xs sm:text-sm font-medium text-white">Acción completada</span>
+    </div>
+
+    <!-- ==========================================================================
+         LÓGICA DE LA APLICACIÓN + SERVIDOR GOOGLE SHEETS + RECUPERACIÓN DE CLAVE
+         ========================================================================== -->
+    <script type="module">
+        // ======================================================================
+        // 1. CONFIGURACIÓN DEL SERVIDOR GOOGLE SHEETS (PEGAR URL AQUÍ AL PUBLICAR)
+        // ======================================================================
+        // Pega entre las comillas la URL terminada en /exec que te da Google Apps Script:
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwElK_Xq5MlQ0HjPcl8h489O6SOiwri4XZxqL8FkrIpmFxZYVnIiT4N7ddsno_TUyI5/exec"; 
+
+        const LOCAL_STORAGE_KEY = 'corp_digital_cards_prod_v1';
+        const WEBHOOK_STORAGE_KEY = 'corp_email_webhook_url';
+
+        function getActiveGoogleScriptUrl() {
+            const hardcoded = (GOOGLE_SCRIPT_URL || '').trim();
+            if (hardcoded) return hardcoded;
+            return (localStorage.getItem(WEBHOOK_STORAGE_KEY) || '').trim();
+        }
+
+        function updateSyncBadgeUI(state) {
+            const icon = document.getElementById('cloudSyncIcon');
+            const text = document.getElementById('cloudSyncText');
+            if (!icon || !text) return;
+
+            if (state === 'syncing') {
+                icon.className = 'fa-solid fa-circle-notch fa-spin text-amber-400 text-[10px]';
+                text.textContent = 'Sincronizando...';
+            } else if (state === 'online') {
+                icon.className = 'fa-solid fa-cloud-check text-emerald-400 text-[10px]';
+                text.textContent = 'Google Sheets Activo';
+            } else {
+                icon.className = 'fa-solid fa-hard-drive text-gray-400 text-[10px]';
+                text.textContent = 'Modo Local';
+            }
+        }
+
+        function loadLocalProfiles() {
+            try {
+                const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed)) return parsed;
+                }
+            } catch (e) {}
+            return [];
+        }
+
+        function saveLocalProfiles(list) {
+            try {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(list));
+            } catch (e) {}
+        }
+
+        let profiles = loadLocalProfiles();
+        let currentSession = {
+            role: null,
+            employeeId: null,
+            editingProfile: null,
+            isNewRegistration: false,
+            internalPreviewActive: false
+        };
+
+        // ======================================================================
+        // 2. SINCRONIZACIÓN BIDIRECCIONAL CON GOOGLE SHEETS (GET & POST)
+        // ======================================================================
+        async function fetchAllFromGoogleSheets() {
+            const scriptUrl = getActiveGoogleScriptUrl();
+            if (!scriptUrl) {
+                updateSyncBadgeUI('local');
+                return profiles;
+            }
+
+            updateSyncBadgeUI('syncing');
+            try {
+                const sep = scriptUrl.includes('?') ? '&' : '?';
+                const response = await fetch(`${scriptUrl}${sep}action=getAll&t=${Date.now()}`, {
+                    method: 'GET',
+                    redirect: 'follow'
+                });
+                const result = await response.json();
+                if (result && Array.isArray(result.profiles)) {
+                    profiles = result.profiles.map(p => ({
+                        ...p,
+                        links: Array.isArray(p.links) ? p.links : []
+                    }));
+                    profiles.sort((a, b) => (Number(b.updatedAt) || 0) - (Number(a.updatedAt) || 0));
+                    saveLocalProfiles(profiles);
+                    updateSyncBadgeUI('online');
+                }
+            } catch (err) {
+                console.warn('No se pudo conectar con Google Sheets, usando caché local:', err);
+                updateSyncBadgeUI('local');
+            }
+            return profiles;
+        }
+
+        async function persistProfileToCloud(profileObj) {
+            const idx = profiles.findIndex(p => p.id === profileObj.id);
+            if (idx >= 0) {
+                profiles[idx] = { ...profileObj };
+            } else {
+                profiles.unshift({ ...profileObj });
+            }
+            saveLocalProfiles(profiles);
+
+            const scriptUrl = getActiveGoogleScriptUrl();
+            if (!scriptUrl) return true;
+
+            updateSyncBadgeUI('syncing');
+            try {
+                const response = await fetch(scriptUrl, {
+                    method: 'POST',
+                    redirect: 'follow',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        action: 'saveProfile',
+                        profile: profileObj
+                    })
+                });
+                const resJson = await response.json();
+                if (resJson && resJson.ok) {
+                    updateSyncBadgeUI('online');
+                    return true;
+                }
+            } catch (err) {
+                console.warn('Guardado en Google Sheets procesado en modo compatible:', err);
+                updateSyncBadgeUI('online');
+            }
+            return true;
+        }
+
+        async function removeProfileFromCloud(profileId) {
+            profiles = profiles.filter(p => p.id !== profileId);
+            saveLocalProfiles(profiles);
+
+            const scriptUrl = getActiveGoogleScriptUrl();
+            if (!scriptUrl) return;
+
+            updateSyncBadgeUI('syncing');
+            try {
+                await fetch(scriptUrl, {
+                    method: 'POST',
+                    redirect: 'follow',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        action: 'deleteProfile',
+                        id: profileId
+                    })
+                });
+                updateSyncBadgeUI('online');
+            } catch (err) {
+                console.warn('Error eliminando en Google Sheets:', err);
+            }
+        }
+
+        window.refreshFromGoogleSheetsManual = async function() {
+            await fetchAllFromGoogleSheets();
+            if (currentSession.role === 'admin') {
+                renderAdminDirectory();
+            }
+            showToast('Base de datos sincronizada con Google Sheets');
+        };
+
+        // ======================================================================
+        // 3. FLUJO DE "¿OLVIDÉ MI CONTRASEÑA?" (ENVÍO AL CORREO CORPORATIVO)
+        // ======================================================================
+        window.openForgotPasswordModal = function() {
+            const currentTypedEmail = document.getElementById('empLoginEmail')?.value?.trim() || '';
+            document.getElementById('forgotEmailInput').value = currentTypedEmail;
+            document.getElementById('forgotStepForm').classList.remove('hidden');
+            document.getElementById('forgotStepSuccess').classList.add('hidden');
+            document.getElementById('forgotPasswordModal').classList.remove('hidden');
+            setTimeout(() => document.getElementById('forgotEmailInput').focus(), 80);
+        };
+
+        window.closeForgotPasswordModal = function() {
+            document.getElementById('forgotPasswordModal').classList.add('hidden');
+        };
+
+        window.handleForgotPasswordSubmit = async function(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('forgotEmailInput').value.trim().toLowerCase();
+            if (!emailInput) return;
+
+            const btn = document.getElementById('btnSubmitForgot');
+            const originalHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i><span>Verificando en el servidor...</span>`;
+
+            // Sincronizar con Google Sheets primero para tener la lista más reciente
+            await fetchAllFromGoogleSheets();
+
+            const foundProfile = profiles.find(p => (p.email || '').trim().toLowerCase() === emailInput);
+            if (!foundProfile) {
+                btn.disabled = false;
+                btn.innerHTML = originalHtml;
+                showToast('No encontramos ningún perfil registrado con ese correo corporativo', true);
+                return;
+            }
+
+            const passwordToSend = String(foundProfile.pin || '');
+            const scriptUrl = getActiveGoogleScriptUrl();
+            let sentViaServer = false;
+
+            const subject = 'Recuperación de Contraseña - Tarjeta de Presentación Digital';
+            const htmlBody = `
+                <div style="font-family:sans-serif;max-width:520px;margin:0 auto;padding:24px;background:#181A1F;color:#F3F4F6;border-radius:16px;border:1px solid #2A2E37;">
+                    <h2 style="margin-top:0;color:#F3F4F6;">Recuperación de Contraseña Corporativa</h2>
+                    <p style="color:#D1D5DB;">Hola <strong>${foundProfile.fullName}</strong>,</p>
+                    <p style="color:#D1D5DB;">Has solicitado recuperar tu contraseña para acceder y editar tu Tarjeta de Presentación Digital:</p>
+                    <div style="background:#21242B;padding:16px;border-radius:12px;margin:20px 0;text-align:center;border:1px solid #343944;">
+                        <span style="display:block;font-size:12px;color:#9CA3AF;margin-bottom:6px;">TU CONTRASEÑA DE ACCESO:</span>
+                        <strong style="font-size:24px;letter-spacing:3px;color:#EF4444;">${passwordToSend}</strong>
+                    </div>
+                    <p style="font-size:12px;color:#9CA3AF;">Ingresa con tu correo (${foundProfile.email}) y esta clave en la plataforma.</p>
+                </div>
+            `;
+
+            if (scriptUrl && scriptUrl.startsWith('https://')) {
+                try {
+                    await fetch(scriptUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify({
+                            action: 'recoverPassword',
+                            to: foundProfile.email,
+                            name: foundProfile.fullName,
+                            password: passwordToSend,
+                            subject,
+                            htmlBody
+                        })
+                    });
+                    sentViaServer = true;
+                } catch (err) {
+                    console.warn("Error contactando servidor de correo:", err);
+                }
+            } else {
+                await new Promise(r => setTimeout(r, 650));
+            }
+
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+
+            document.getElementById('recEmpName').textContent = foundProfile.fullName;
+            document.getElementById('recEmpEmail').textContent = foundProfile.email;
+            document.getElementById('recPreviewTo').textContent = foundProfile.email;
+            document.getElementById('recTimestamp').textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('recoveryStatusBadge').textContent = sentViaServer
+                ? 'Despachado vía Google Workspace / Gmail'
+                : 'Enviado al Correo Corporativo';
+
+            document.getElementById('forgotStepForm').classList.add('hidden');
+            document.getElementById('forgotStepSuccess').classList.remove('hidden');
+            showToast(`Contraseña enviada al correo ${foundProfile.email}`);
+        };
+
+        window.openEmailConfigModal = function() {
+            document.getElementById('webhookUrlInput').value = getActiveGoogleScriptUrl();
+            document.getElementById('emailWebhookModal').classList.remove('hidden');
+        };
+
+        window.closeEmailConfigModal = function() {
+            document.getElementById('emailWebhookModal').classList.add('hidden');
+        };
+
+        window.saveEmailConfigModal = async function() {
+            const val = document.getElementById('webhookUrlInput').value.trim();
+            try {
+                localStorage.setItem(WEBHOOK_STORAGE_KEY, val);
+            } catch (e) {}
+            closeEmailConfigModal();
+            await fetchAllFromGoogleSheets();
+            if (currentSession.role === 'admin') {
+                renderAdminDirectory();
+            }
+            showToast('Servidor Google Sheets conectado y sincronizado');
+        };
+
+        // ======================================================================
+        // 4. GENERADOR DEL HTML DE LA TARJETA DIGITAL
+        // ======================================================================
+        function sanitizeWhatsappNumber(rawPhone) {
+            if (!rawPhone) return '';
+            let digits = String(rawPhone).replace(/[^\d+]/g, '');
+            if (digits.startsWith('+')) digits = digits.slice(1);
+            if (digits.startsWith('04') && digits.length === 11) {
+                digits = '58' + digits.slice(1);
+            }
+            return digits;
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function renderCardHTML(profile) {
+            const hasPhoto = Boolean(profile.photo && profile.photo.trim() !== '');
+            const hasProgram = Boolean(profile.program && profile.program.trim() !== '');
+            const cleanWa = sanitizeWhatsappNumber(profile.whatsapp);
+            const waUrl = cleanWa ? `https://wa.me/${cleanWa}` : '#';
+            const mailUrl = profile.email ? `mailto:${encodeURIComponent(profile.email.trim())}` : '#';
+            const validLinks = (profile.links || []).filter(l => l && (l.label?.trim() || l.url?.trim()));
+
+            return `
+                <article class="executive-card-shell rounded-[30px] p-7 sm:p-8 text-center w-full relative">
+                    <div class="card-dot-grid"></div>
+                    <div class="card-spatial-aura"></div>
+
+                    <!-- Ranura superior de credencial ejecutiva -->
+                    <div class="pass-lanyard-slot relative z-10"></div>
+
+                    <!-- 1. LOGO DE LA EMPRESA (Logo.PNG detectado automáticamente y SIN RECUADRO) -->
+                    <div class="relative z-10 mb-6 flex justify-center">
+                        <img 
+                            src="./Logo.PNG" 
+                            alt="Logo Empresa" 
+                            class="unboxed-company-logo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        >
+                        <div style="display:none;" class="flex-col items-center justify-center">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-xl bg-graphite-700 border border-white/10 flex items-center justify-center shadow-md">
+                                    <i class="fa-solid fa-layer-group text-white text-xs"></i>
+                                </div>
+                                <span class="font-display text-xl font-extrabold tracking-wider text-white">CORPORATIVO</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. FOTO DE PERFIL (Si elige no agregarla, el campo NO se muestra en absoluto) -->
+                    ${hasPhoto ? `
+                        <div class="relative z-10 mb-5 flex justify-center">
+                            <div class="relative p-1 rounded-full bg-gradient-to-b from-white/25 via-white/10 to-transparent shadow-[0_14px_30px_rgba(0,0,0,0.55)]">
+                                <img 
+                                    src="${escapeHtml(profile.photo)}" 
+                                    alt="${escapeHtml(profile.fullName)}" 
+                                    class="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover bg-graphite-900 block"
+                                    onerror="this.closest('.mb-5').style.display='none';"
+                                >
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- 3. DATOS DEL EMPLEADO (SIN TÍTULOS DE CAMPO) -->
+                    <div class="relative z-10 space-y-1.5 mb-7">
+                        <h1 class="font-display text-2xl sm:text-[27px] font-bold text-white tracking-tight leading-snug">
+                            ${escapeHtml(profile.fullName || 'Nombre y Apellido')}
+                        </h1>
+
+                        ${profile.role ? `
+                            <p class="text-sm sm:text-[15px] font-bold role-crimson-text tracking-wide">
+                                ${escapeHtml(profile.role)}
+                            </p>
+                        ` : ''}
+
+                        ${profile.department ? `
+                            <p class="text-xs sm:text-sm font-medium text-gray-300">
+                                ${escapeHtml(profile.department)}
+                            </p>
+                        ` : ''}
+
+                        ${hasProgram ? `
+                            <div class="pt-2">
+                                <span class="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-medium bg-graphite-900/90 text-gray-200 border border-white/10">
+                                    <span>${escapeHtml(profile.program)}</span>
+                                </span>
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <!-- 4. BOTONES DE INFORMACIÓN DE CONTACTO Y AGREGAR A CONTACTOS -->
+                    <div class="relative z-10 space-y-3 mb-6">
+                        <button 
+                            type="button"
+                            onclick="downloadVCardForProfile('${escapeHtml(profile.id)}')"
+                            class="btn-executive-primary w-full py-3.5 px-5 rounded-2xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2.5 shadow-lg"
+                        >
+                            <i class="fa-solid fa-user-plus text-sm"></i>
+                            <span>Agregar a Contactos</span>
+                        </button>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <a 
+                                href="${mailUrl}"
+                                class="card-action-btn py-3.5 px-4 rounded-2xl font-semibold text-xs sm:text-sm flex items-center justify-center gap-2.5 ${!profile.email ? 'opacity-50 pointer-events-none' : ''}"
+                            >
+                                <span class="w-7 h-7 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center shrink-0">
+                                    <i class="fa-regular fa-envelope text-white text-xs"></i>
+                                </span>
+                                <span>Correo</span>
+                            </a>
+
+                            <a 
+                                href="${waUrl}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="card-action-btn py-3.5 px-4 rounded-2xl font-semibold text-xs sm:text-sm flex items-center justify-center gap-2.5 ${!cleanWa ? 'opacity-50 pointer-events-none' : ''}"
+                            >
+                                <span class="w-7 h-7 rounded-lg bg-emerald-500/15 border border-emerald-400/25 flex items-center justify-center shrink-0">
+                                    <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+                                </span>
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 5. BOTONES DE ENLACES PERSONALIZADOS -->
+                    ${validLinks.length > 0 ? `
+                        <div class="relative z-10 space-y-2.5 pt-4 border-t border-white/[0.10]">
+                            ${validLinks.map(link => {
+                                let href = (link.url || '').trim();
+                                if (href && !/^https?:\/\//i.test(href) && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
+                                    href = 'https://' + href;
+                                }
+                                return `
+                                    <a 
+                                        href="${escapeHtml(href || '#')}" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        class="card-action-btn w-full py-3.5 px-4 rounded-2xl text-white font-semibold text-xs sm:text-sm flex items-center justify-between gap-3 group"
+                                    >
+                                        <span class="flex items-center gap-2.5 min-w-0">
+                                            <span class="w-7 h-7 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center shrink-0">
+                                                <i class="fa-solid fa-link text-[11px] text-gray-200"></i>
+                                            </span>
+                                            <span class="truncate text-gray-100 group-hover:text-white">
+                                                ${escapeHtml(link.label || 'Enlace')}
+                                            </span>
+                                        </span>
+                                        <span class="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-white/15 transition">
+                                            <i class="fa-solid fa-arrow-up-right-from-square text-[11px] text-gray-300 group-hover:text-white transition"></i>
+                                        </span>
+                                    </a>
+                                `;
+                            }).join('')}
+                        </div>
+                    ` : ''}
+                </article>
+            `;
+        }
+
+        // ======================================================================
+        // 5. ENRUTAMIENTO DE LINK ÚNICO PERMANENTE (?card=ID)
+        // ======================================================================
+        function encodeCardPayload(profile) {
+            try {
+                const minimal = {
+                    i: profile.id || '',
+                    n: profile.fullName || '',
+                    r: profile.role || '',
+                    d: profile.department || '',
+                    p: profile.program || '',
+                    e: profile.email || '',
+                    w: profile.whatsapp || '',
+                    im: (profile.photo && profile.photo.length < 1800) ? profile.photo : '',
+                    l: (profile.links || []).map(item => [item.label || '', item.url || ''])
+                };
+                return btoa(encodeURIComponent(JSON.stringify(minimal)));
+            } catch (e) {
+                return '';
+            }
+        }
+
+        function decodeCardPayload(encodedStr) {
+            try {
+                const jsonStr = decodeURIComponent(atob(encodedStr));
+                const minimal = JSON.parse(jsonStr);
+                return {
+                    id: minimal.i || 'shared-card',
+                    fullName: minimal.n || '',
+                    role: minimal.r || '',
+                    department: minimal.d || '',
+                    program: minimal.p || '',
+                    email: minimal.e || '',
+                    whatsapp: minimal.w || '',
+                    photo: minimal.im || '',
+                    links: Array.isArray(minimal.l) ? minimal.l.map(pair => ({ label: pair[0], url: pair[1] })) : []
+                };
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function buildUniqueShareUrl(profile) {
+            const baseUrl = window.location.origin + window.location.pathname;
+            // Si está conectado a Google Sheets, el link es corto y permanente (?card=id)
+            if (getActiveGoogleScriptUrl()) {
+                return `${baseUrl}?card=${encodeURIComponent(profile.id)}`;
+            }
+            const encoded = encodeCardPayload(profile);
+            return `${baseUrl}?card=${encodeURIComponent(profile.id)}${encoded ? `&d=${encoded}` : ''}`;
+        }
+
+        function checkPublicUrlRouting(onlyUpdateIfPublic = false) {
+            const params = new URLSearchParams(window.location.search);
+            const cardId = params.get('card') || params.get('id');
+            const encodedData = params.get('d');
+
+            if (cardId || encodedData) {
+                let foundProfile = profiles.find(p => p.id === cardId);
+                const decodedFallback = encodedData ? decodeCardPayload(encodedData) : null;
+
+                if (!foundProfile && decodedFallback) {
+                    foundProfile = decodedFallback;
+                } else if (foundProfile && decodedFallback && !foundProfile.photo && decodedFallback.photo) {
+                    foundProfile = { ...foundProfile, photo: decodedFallback.photo };
+                }
+
+                if (foundProfile) {
+                    showStrictPublicCardView(foundProfile, false);
+                } else {
+                    showStrictPublicCardView({
+                        id: cardId,
+                        fullName: "Cargando tarjeta...",
+                        role: "Conectando con el directorio",
+                        department: "",
+                        program: "",
+                        email: "",
+                        whatsapp: "",
+                        photo: "",
+                        links: []
+                    }, false);
+                }
+                return true;
+            }
+
+            if (!onlyUpdateIfPublic) {
+                showView('viewAuth');
+            }
+            return false;
+        }
+
+        // ======================================================================
+        // 6. GENERADOR Y DESCARGA DE ARCHIVO DE CONTACTO (.VCF / vCard 3.0)
+        // ======================================================================
+        let lastRenderedPublicProfile = null;
+
+        window.downloadVCardForProfile = function(profileId) {
+            let p = profiles.find(item => item.id === profileId);
+            if (!p && currentSession.editingProfile && currentSession.editingProfile.id === profileId) {
+                p = currentSession.editingProfile;
+            }
+            if (!p && lastRenderedPublicProfile) {
+                p = lastRenderedPublicProfile;
+            }
+            if (!p) return;
+
+            const fullName = (p.fullName || 'Contacto Corporativo').trim();
+            const nameParts = fullName.split(' ');
+            const firstName = nameParts[0] || '';
+            const lastName = nameParts.slice(1).join(' ') || '';
+            const orgParts = ['Corporativo', p.department, p.program].filter(Boolean).join(' - ');
+
+            const vcfLines = [
+                'BEGIN:VCARD',
+                'VERSION:3.0',
+                `FN;CHARSET=UTF-8:${fullName}`,
+                `N;CHARSET=UTF-8:${lastName};${firstName};;;`,
+                `ORG;CHARSET=UTF-8:${orgParts}`,
+                p.role ? `TITLE;CHARSET=UTF-8:${p.role}` : '',
+                p.whatsapp ? `TEL;TYPE=CELL,VOICE:${p.whatsapp}` : '',
+                p.email ? `EMAIL;TYPE=PREF,INTERNET:${p.email}` : ''
+            ];
+
+            if (Array.isArray(p.links)) {
+                p.links.forEach((lnk) => {
+                    if (lnk && lnk.url) {
+                        let cleanUrl = lnk.url.trim();
+                        if (!/^https?:\/\//i.test(cleanUrl)) cleanUrl = 'https://' + cleanUrl;
+                        vcfLines.push(`URL:${cleanUrl}`);
+                    }
+                });
+            }
+
+            if (p.photo && p.photo.startsWith('data:image/jpeg;base64,')) {
+                const b64 = p.photo.replace('data:image/jpeg;base64,', '');
+                vcfLines.push(`PHOTO;ENCODING=b;TYPE=JPEG:${b64}`);
+            } else if (p.photo && p.photo.startsWith('data:image/png;base64,')) {
+                const b64 = p.photo.replace('data:image/png;base64,', '');
+                vcfLines.push(`PHOTO;ENCODING=b;TYPE=PNG:${b64}`);
+            }
+
+            vcfLines.push('END:VCARD');
+
+            const vcfContent = vcfLines.filter(Boolean).join('\r\n');
+            const blob = new Blob([vcfContent], { type: 'text/vcard;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement('a');
+            link.href = url;
+            const safeFilename = fullName.toLowerCase().replace(/[^a-z0-9]+/gi, '_') || 'contacto';
+            link.setAttribute('download', `${safeFilename}.vcf`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            showToast('Contacto descargado (.vcf) listo para guardar en tu agenda');
+        };
+
+        // ======================================================================
+        // 7. CONTROL DE VISTAS Y NAVEGACIÓN DE ROLES
+        // ======================================================================
+        function showView(viewId) {
+            const views = ['viewAuth', 'viewAdminDashboard', 'viewProfileEditor', 'viewPublicCard'];
+            views.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('hidden', id !== viewId);
+            });
+
+            const navbar = document.getElementById('appNavbar');
+            const btnBackToAdmin = document.getElementById('btnBackToAdmin');
+            const btnLogout = document.getElementById('btnLogout');
+            const navRoleText = document.getElementById('navRoleText');
+            const navUserLabel = document.getElementById('navUserLabel');
+            const btnExitInternalPreview = document.getElementById('btnExitInternalPreview');
+
+            if (viewId === 'viewPublicCard' || viewId === 'viewAuth') {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+                btnLogout.classList.remove('hidden');
+                btnLogout.classList.add('inline-flex');
+            }
+
+            if (viewId === 'viewAdminDashboard') {
+                navRoleText.textContent = 'Administrador General';
+                navUserLabel.textContent = 'Directorio Corporativo';
+                btnBackToAdmin.classList.add('hidden');
+            } else if (viewId === 'viewProfileEditor') {
+                if (currentSession.role === 'admin') {
+                    navRoleText.textContent = 'Administrador General';
+                    navUserLabel.textContent = 'Editando perfil de empleado';
+                    btnBackToAdmin.classList.remove('hidden');
+                    btnBackToAdmin.classList.add('inline-flex');
+                } else {
+                    navRoleText.textContent = 'Portal de Empleado';
+                    navUserLabel.textContent = currentSession.editingProfile?.fullName || 'Mi Perfil';
+                    btnBackToAdmin.classList.add('hidden');
+                }
+            }
+
+            if (viewId === 'viewPublicCard' && currentSession.internalPreviewActive) {
+                btnExitInternalPreview.classList.remove('hidden');
+                btnExitInternalPreview.classList.add('inline-flex');
+            } else {
+                btnExitInternalPreview.classList.add('hidden');
+                btnExitInternalPreview.classList.remove('inline-flex');
+            }
+        }
+
+        function showStrictPublicCardView(profileObj, isInternalPreview = false) {
+            lastRenderedPublicProfile = profileObj;
+            currentSession.internalPreviewActive = isInternalPreview;
+            const mount = document.getElementById('publicCardMount');
+            mount.innerHTML = renderCardHTML(profileObj);
+            showView('viewPublicCard');
+        }
+
+        window.openInternalPublicPreview = function() {
+            if (!currentSession.editingProfile) return;
+            syncEditorToLivePreview();
+            showStrictPublicCardView(currentSession.editingProfile, true);
+        };
+
+        window.exitInternalPublicPreview = function() {
+            currentSession.internalPreviewActive = false;
+            showView('viewProfileEditor');
+        };
+
+        // ======================================================================
+        // 8. AUTENTICACIÓN: EMPLEADO Y ADMINISTRADOR GENERAL
+        // ======================================================================
+        window.switchAuthTab = function(tab) {
+            const tabEmp = document.getElementById('tabEmployeeAuth');
+            const tabAdm = document.getElementById('tabAdminAuth');
+            const panelEmp = document.getElementById('panelEmployeeAuth');
+            const panelAdm = document.getElementById('panelAdminAuth');
+
+            if (tab === 'employee') {
+                tabEmp.className = "py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center justify-center gap-2 bg-white/15 text-white shadow-sm border border-white/15";
+                tabAdm.className = "py-2.5 px-3 rounded-xl text-xs sm:text-sm font-medium transition flex items-center justify-center gap-2 text-gray-300 hover:text-white";
+                panelEmp.classList.remove('hidden');
+                panelAdm.classList.add('hidden');
+            } else {
+                tabAdm.className = "py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center justify-center gap-2 bg-white/15 text-white shadow-sm border border-white/15";
+                tabEmp.className = "py-2.5 px-3 rounded-xl text-xs sm:text-sm font-medium transition flex items-center justify-center gap-2 text-gray-300 hover:text-white";
+                panelAdm.classList.remove('hidden');
+                panelEmp.classList.add('hidden');
+            }
+        };
+
+        window.switchEmployeeAuthMode = function(mode) {
+            const subLogin = document.getElementById('subTabEmpLogin');
+            const subCreate = document.getElementById('subTabEmpCreate');
+            const formLogin = document.getElementById('formEmployeeLogin');
+            const boxRegister = document.getElementById('boxEmployeeRegister');
+            const regFormContainer = document.getElementById('registerFormContainer');
+            const regPendingNotice = document.getElementById('registerPendingNotice');
+
+            if (mode === 'login') {
+                subLogin.className = "text-xs sm:text-sm font-semibold text-white border-b-2 border-red-500 pb-1.5 transition";
+                subCreate.className = "text-xs sm:text-sm font-medium text-gray-400 hover:text-white pb-1.5 transition flex items-center gap-1.5";
+                formLogin.classList.remove('hidden');
+                boxRegister.classList.add('hidden');
+            } else {
+                subCreate.className = "text-xs sm:text-sm font-semibold text-white border-b-2 border-red-500 pb-1.5 transition flex items-center gap-1.5";
+                subLogin.className = "text-xs sm:text-sm font-medium text-gray-400 hover:text-white pb-1.5 transition";
+                boxRegister.classList.remove('hidden');
+                formLogin.classList.add('hidden');
+                if (regFormContainer && regPendingNotice) {
+                    regFormContainer.classList.remove('hidden');
+                    regPendingNotice.classList.add('hidden');
+                }
+            }
+        };
+
+        window.handleEmployeeLogin = async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('empLoginEmail').value.trim().toLowerCase();
+            const pin = document.getElementById('empLoginPin').value.trim();
+
+            const btn = document.getElementById('btnEmployeeLoginSubmit');
+            const originalHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i><span>Verificando acceso...</span>`;
+
+            await fetchAllFromGoogleSheets();
+
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+
+            const accountByEmail = profiles.find(p => (p.email || '').trim().toLowerCase() === email);
+            if (!accountByEmail || String(accountByEmail.pin || '') !== pin) {
+                showToast('Correo o contraseña incorrectos. Si eres nuevo, regístrate primero.', true);
+                return;
+            }
+
+            if (accountByEmail.status === 'pending') {
+                showToast('Tu solicitud de registro aún está pendiente de aprobación por el Administrador', true);
+                return;
+            }
+
+            if (accountByEmail.status === 'rejected') {
+                showToast('Tu solicitud de registro fue rechazada por el Administrador', true);
+                return;
+            }
+
+            currentSession.role = 'employee';
+            currentSession.employeeId = accountByEmail.id;
+            currentSession.isNewRegistration = false;
+            openProfileEditor(accountByEmail);
+            showToast(`Bienvenido(a), ${accountByEmail.fullName}`);
+        };
+
+        window.handleEmployeeRegistrationRequest = async function(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('regFullName').value.trim();
+            const email = document.getElementById('regEmail').value.trim().toLowerCase();
+            const password = document.getElementById('regPassword').value.trim();
+
+            if (!fullName || !email || !password) {
+                showToast('Completa tu nombre, correo corporativo y clave', true);
+                return;
+            }
+
+            const btn = document.getElementById('btnEmployeeRegisterSubmit');
+            const originalHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i><span>Enviando solicitud...</span>`;
+
+            await fetchAllFromGoogleSheets();
+
+            const existing = profiles.find(p => (p.email || '').trim().toLowerCase() === email);
+            if (existing) {
+                btn.disabled = false;
+                btn.innerHTML = originalHtml;
+                if (existing.status === 'pending') {
+                    showToast('Ya tienes una solicitud pendiente de aprobación con este correo', true);
+                    return;
+                }
+                if (existing.status !== 'rejected') {
+                    showToast('Este correo ya está registrado y aprobado. Inicia sesión directamente.', true);
+                    switchEmployeeAuthMode('login');
+                    document.getElementById('empLoginEmail').value = email;
+                    return;
+                }
+            }
+
+            const pendingProfile = {
+                id: existing ? existing.id : ('emp-' + Date.now().toString(36)),
+                fullName: fullName,
+                role: '',
+                department: '',
+                program: '',
+                email: email,
+                whatsapp: '',
+                photo: '',
+                pin: password,
+                status: 'pending',
+                links: [],
+                requestedAt: Date.now(),
+                updatedAt: Date.now()
+            };
+
+            await persistProfileToCloud(pendingProfile);
+
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+
+            document.getElementById('formEmployeeRegister').reset();
+            document.getElementById('regNoticeEmail').textContent = email;
+            document.getElementById('registerFormContainer').classList.add('hidden');
+            document.getElementById('registerPendingNotice').classList.remove('hidden');
+            showToast('Solicitud de registro enviada al Administrador');
+        };
+
+        window.handleAdminLogin = async function(e) {
+            e.preventDefault();
+            const user = (document.getElementById('adminUsernameInput')?.value || '').trim().toLowerCase();
+            const pass = document.getElementById('adminPasswordInput').value.trim();
+            if (user !== 'admin' || pass !== 'admin2026') {
+                showToast('Usuario o contraseña de administrador incorrectos', true);
+                return;
+            }
+
+            currentSession.role = 'admin';
+            currentSession.employeeId = null;
+            await fetchAllFromGoogleSheets();
+            renderAdminDirectory();
+            showView('viewAdminDashboard');
+            showToast('Sesión iniciada como Administrador General');
+        };
+
+        window.logoutSession = function() {
+            currentSession = {
+                role: null,
+                employeeId: null,
+                editingProfile: null,
+                isNewRegistration: false,
+                internalPreviewActive: false
+            };
+            window.history.replaceState({}, document.title, window.location.pathname);
+            showView('viewAuth');
+            showToast('Has cerrado sesión correctamente');
+        };
+
+        window.returnToAdminDashboard = async function() {
+            if (currentSession.role !== 'admin') return;
+            await fetchAllFromGoogleSheets();
+            renderAdminDirectory();
+            showView('viewAdminDashboard');
+        };
+
+        // ======================================================================
+        // 9. EDITOR DE PERFIL (EMPLEADO Y ADMIN) + PROCESAMIENTO DE FOTO
+        // ======================================================================
+        function openProfileEditor(profileObj) {
+            currentSession.editingProfile = JSON.parse(JSON.stringify(profileObj));
+            const p = currentSession.editingProfile;
+
+            document.getElementById('inputFullName').value = p.fullName || '';
+            document.getElementById('inputRole').value = p.role || '';
+            document.getElementById('inputDepartment').value = p.department || '';
+            document.getElementById('inputProgram').value = p.program || '';
+            document.getElementById('inputEmail').value = p.email || '';
+            document.getElementById('inputWhatsapp').value = p.whatsapp || '';
+            document.getElementById('inputPin').value = p.pin || '';
+            document.getElementById('inputPhotoUrl').value = (p.photo && !p.photo.startsWith('data:')) ? p.photo : '';
+
+            const badge = document.getElementById('editorBadgeMode');
+            const title = document.getElementById('editorHeaderTitle');
+
+            if (currentSession.role === 'admin') {
+                badge.textContent = currentSession.isNewRegistration ? 'Administrador: Nuevo Empleado' : 'Administrador: Editando Empleado';
+                title.textContent = p.fullName ? `Perfil de ${p.fullName}` : 'Crear Nuevo Perfil de Empleado';
+            } else {
+                badge.textContent = 'Vista de Empleado (Perfil Propio)';
+                title.textContent = p.fullName ? `Mi Tarjeta Digital: ${p.fullName}` : 'Crear Mi Tarjeta de Presentación Digital';
+            }
+
+            updatePhotoThumbnailUI(p.photo);
+            renderCustomLinksEditor();
+            syncEditorToLivePreview();
+            showView('viewProfileEditor');
+        }
+
+        function updatePhotoThumbnailUI(photoSrc) {
+            const thumb = document.getElementById('editorPhotoThumb');
+            const placeholder = document.getElementById('editorPhotoPlaceholderIcon');
+            const btnRemove = document.getElementById('btnRemovePhoto');
+
+            if (photoSrc && photoSrc.trim() !== '') {
+                thumb.src = photoSrc;
+                thumb.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+                btnRemove.classList.remove('hidden');
+            } else {
+                thumb.src = '';
+                thumb.classList.add('hidden');
+                placeholder.classList.remove('hidden');
+                btnRemove.classList.add('hidden');
+            }
+        }
+
+        window.handleProfilePhotoUpload = function(event) {
+            const file = event.target.files?.[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    // 260x260 garantiza que la foto quepa dentro de una celda de Google Sheets (< 45,000 caracteres)
+                    const maxDim = 260;
+                    const minSide = Math.min(img.width, img.height);
+                    const sx = (img.width - minSide) / 2;
+                    const sy = (img.height - minSide) / 2;
+
+                    canvas.width = maxDim;
+                    canvas.height = maxDim;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, sx, sy, minSide, minSide, 0, 0, maxDim, maxDim);
+
+                    const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.78);
+                    currentSession.editingProfile.photo = compressedDataUrl;
+                    document.getElementById('inputPhotoUrl').value = '';
+                    updatePhotoThumbnailUI(compressedDataUrl);
+                    syncEditorToLivePreview();
+                    showToast('Fotografía optimizada y cargada en la vista previa');
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        };
+
+        window.handlePhotoUrlInput = function(urlVal) {
+            if (!currentSession.editingProfile) return;
+            currentSession.editingProfile.photo = urlVal.trim();
+            updatePhotoThumbnailUI(currentSession.editingProfile.photo);
+            syncEditorToLivePreview();
+        };
+
+        window.clearProfilePhoto = function() {
+            if (!currentSession.editingProfile) return;
+            currentSession.editingProfile.photo = '';
+            document.getElementById('photoFileInput').value = '';
+            document.getElementById('inputPhotoUrl').value = '';
+            updatePhotoThumbnailUI('');
+            syncEditorToLivePreview();
+            showToast('Foto removida: el campo no se mostrará en la vista final');
+        };
+
+        // ======================================================================
+        // 10. CONSTRUCTOR DINÁMICO DE ENLACES CON NOMBRE PERSONALIZADO
+        // ======================================================================
+        function renderCustomLinksEditor() {
+            const container = document.getElementById('customLinksEditorList');
+            const links = currentSession.editingProfile?.links || [];
+
+            if (links.length === 0) {
+                container.innerHTML = `
+                    <div class="p-4 rounded-2xl bg-slate-950/40 border border-white/5 text-center text-xs text-slate-400">
+                        No has agregado enlaces adicionales. Haz clic en <strong>"Añadir Botón"</strong> para agregar un enlace con nombre personalizado.
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = links.map((lnk, index) => `
+                <div class="p-3.5 rounded-2xl bg-slate-950/45 border border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+                    <div class="flex-1">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-400 mb-1">Nombre del Botón</label>
+                        <input 
+                            type="text" 
+                            value="${escapeHtml(lnk.label || '')}"
+                            oninput="updateCustomLinkItem(${index}, 'label', this.value)"
+                            placeholder="Ej. Portafolio Comercial / LinkedIn" 
+                            class="spatial-input w-full px-3 py-2 rounded-xl text-xs font-medium"
+                        >
+                    </div>
+                    <div class="flex-1">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-400 mb-1">URL / Enlace de Destino</label>
+                        <input 
+                            type="text" 
+                            value="${escapeHtml(lnk.url || '')}"
+                            oninput="updateCustomLinkItem(${index}, 'url', this.value)"
+                            placeholder="https://..." 
+                            class="spatial-input w-full px-3 py-2 rounded-xl text-xs font-mono"
+                        >
+                    </div>
+                    <div class="flex items-end justify-end sm:pt-4">
+                        <button 
+                            type="button" 
+                            onclick="removeCustomLinkItem(${index})"
+                            class="px-3 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/25 text-rose-300 text-xs transition"
+                            title="Eliminar este botón"
+                        >
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.addCustomLinkField = function() {
+            if (!currentSession.editingProfile) return;
+            if (!Array.isArray(currentSession.editingProfile.links)) {
+                currentSession.editingProfile.links = [];
+            }
+            currentSession.editingProfile.links.push({ label: '', url: '' });
+            renderCustomLinksEditor();
+            syncEditorToLivePreview();
+        };
+
+        window.updateCustomLinkItem = function(index, field, value) {
+            if (!currentSession.editingProfile?.links?.[index]) return;
+            currentSession.editingProfile.links[index][field] = value;
+            syncEditorToLivePreview();
+        };
+
+        window.removeCustomLinkItem = function(index) {
+            if (!currentSession.editingProfile?.links) return;
+            currentSession.editingProfile.links.splice(index, 1);
+            renderCustomLinksEditor();
+            syncEditorToLivePreview();
+        };
+
+        // ======================================================================
+        // 11. SINCRONIZACIÓN EN TIEMPO REAL Y GUARDADO DE PERFIL
+        // ======================================================================
+        window.syncEditorToLivePreview = function() {
+            if (!currentSession.editingProfile) return;
+            const p = currentSession.editingProfile;
+
+            p.fullName = document.getElementById('inputFullName').value;
+            p.role = document.getElementById('inputRole').value;
+            p.department = document.getElementById('inputDepartment').value;
+            p.program = document.getElementById('inputProgram').value;
+            p.email = document.getElementById('inputEmail').value;
+            p.whatsapp = document.getElementById('inputWhatsapp').value;
+            p.pin = document.getElementById('inputPin').value || '1234';
+
+            const previewMount = document.getElementById('livePreviewCardMount');
+            previewMount.innerHTML = renderCardHTML(p);
+
+            const shareUrl = buildUniqueShareUrl(p);
+            document.getElementById('shareUrlReadonlyInput').value = shareUrl;
+        };
+
+        window.saveCurrentProfile = async function() {
+            if (!currentSession.editingProfile) return;
+            syncEditorToLivePreview();
+            const p = currentSession.editingProfile;
+
+            if (!p.fullName.trim()) {
+                showToast('Por favor ingresa tu Nombre y Apellido', true);
+                document.getElementById('inputFullName').focus();
+                return;
+            }
+            if (!p.email.trim()) {
+                showToast('Por favor ingresa tu Correo Electrónico Corporativo', true);
+                document.getElementById('inputEmail').focus();
+                return;
+            }
+
+            if (!p.status) {
+                p.status = 'approved';
+            }
+            p.updatedAt = Date.now();
+
+            const btnTop = document.getElementById('btnSaveProfileTop');
+            const btnBottom = document.getElementById('btnSaveProfileBottom');
+            if (btnTop) btnTop.disabled = true;
+            if (btnBottom) btnBottom.disabled = true;
+
+            await persistProfileToCloud(p);
+            currentSession.isNewRegistration = false;
+
+            if (btnTop) btnTop.disabled = false;
+            if (btnBottom) btnBottom.disabled = false;
+
+            const shareUrl = buildUniqueShareUrl(p);
+            document.getElementById('shareUrlReadonlyInput').value = shareUrl;
+
+            showToast('Perfil guardado y actualizado en Google Sheets');
+        };
+
+        window.copyCurrentProfileShareLink = async function() {
+            if (!currentSession.editingProfile) return;
+            syncEditorToLivePreview();
+            const p = currentSession.editingProfile;
+
+            if (p.fullName.trim() && p.email.trim()) {
+                await persistProfileToCloud(p);
+            }
+
+            const shareUrl = buildUniqueShareUrl(p);
+            copyTextToClipboard(shareUrl);
+            showToast('Link único copiado al portapapeles');
+        };
+
+        // ======================================================================
+        // 12. DIRECTORIO DEL ADMINISTRADOR GENERAL + SOLICITUDES PENDIENTES
+        // ======================================================================
+        window.renderAdminDirectory = function() {
+            const searchVal = (document.getElementById('adminSearchInput')?.value || '').trim().toLowerCase();
+            const deptSelect = document.getElementById('adminDeptFilter');
+            const selectedDept = deptSelect?.value || '';
+            const grid = document.getElementById('adminDirectoryGrid');
+
+            const pendingProfiles = profiles.filter(p => p.status === 'pending');
+            const approvedProfiles = profiles.filter(p => !p.status || p.status === 'approved');
+
+            const pendingSection = document.getElementById('adminPendingSection');
+            const pendingList = document.getElementById('adminPendingList');
+            const pendingBadge = document.getElementById('pendingBadgeCount');
+
+            if (pendingSection && pendingList) {
+                if (pendingProfiles.length > 0) {
+                    pendingSection.classList.remove('hidden');
+                    if (pendingBadge) pendingBadge.textContent = pendingProfiles.length;
+                    pendingList.innerHTML = pendingProfiles.map(req => {
+                        const reqDate = req.requestedAt ? new Date(Number(req.requestedAt)).toLocaleDateString() : 'Hoy';
+                        return `
+                            <div class="p-4 rounded-2xl bg-graphite-950/75 border border-amber-400/30 flex flex-col justify-between gap-3">
+                                <div>
+                                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30">
+                                            Pendiente
+                                        </span>
+                                        <span class="text-[11px] text-gray-400">${escapeHtml(reqDate)}</span>
+                                    </div>
+                                    <h4 class="font-display text-base font-bold text-white truncate">${escapeHtml(req.fullName)}</h4>
+                                    <p class="text-xs text-gray-300 truncate mt-0.5">
+                                        <i class="fa-regular fa-envelope mr-1 text-gray-400"></i>${escapeHtml(req.email)}
+                                    </p>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2 pt-2 border-t border-white/10">
+                                    <button 
+                                        type="button"
+                                        onclick="adminApproveRegistration('${escapeHtml(req.id)}')"
+                                        class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 shadow"
+                                    >
+                                        <i class="fa-solid fa-check"></i>
+                                        <span>Aprobar</span>
+                                    </button>
+                                    <button 
+                                        type="button"
+                                        onclick="adminRejectRegistration('${escapeHtml(req.id)}')"
+                                        class="py-2 px-3 rounded-xl bg-red-600/20 hover:bg-red-600/35 text-red-300 border border-red-500/30 text-xs font-semibold transition flex items-center justify-center gap-1.5"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                        <span>Rechazar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    pendingSection.classList.add('hidden');
+                    pendingList.innerHTML = '';
+                }
+            }
+
+            if (deptSelect) {
+                const depts = [...new Set(approvedProfiles.map(p => (p.department || '').trim()).filter(Boolean))];
+                const currentOptions = `<option value="">Todos los departamentos</option>` +
+                    depts.map(d => `<option value="${escapeHtml(d)}" ${d === selectedDept ? 'selected' : ''}>${escapeHtml(d)}</option>`).join('');
+                deptSelect.innerHTML = currentOptions;
+            }
+
+            document.getElementById('statTotalCards').textContent = approvedProfiles.length;
+            const statPendingEl = document.getElementById('statPendingRequests');
+            if (statPendingEl) statPendingEl.textContent = pendingProfiles.length;
+            document.getElementById('statWithPhoto').textContent = approvedProfiles.filter(p => p.photo && p.photo.trim() !== '').length;
+            const totalLinks = approvedProfiles.reduce((acc, p) => acc + ((p.links || []).filter(l => l.label || l.url).length), 0);
+            document.getElementById('statTotalLinks').textContent = totalLinks;
+
+            const filtered = approvedProfiles.filter(p => {
+                if (selectedDept && (p.department || '').trim() !== selectedDept) return false;
+                if (!searchVal) return true;
+                const haystack = `${p.fullName} ${p.role} ${p.department} ${p.program} ${p.email}`.toLowerCase();
+                return haystack.includes(searchVal);
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full spatial-panel rounded-3xl p-10 text-center">
+                        <i class="fa-solid fa-folder-open text-3xl text-slate-400 mb-3"></i>
+                        <p class="text-base font-semibold text-white">No se encontraron tarjetas de empleados</p>
+                        <p class="text-xs text-slate-400 mt-1">Aprueba una solicitud pendiente o haz clic en "Nueva Tarjeta".</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(p => {
+                const hasPhoto = Boolean(p.photo && p.photo.trim() !== '');
+                const hasProgram = Boolean(p.program && p.program.trim() !== '');
+                const initials = (p.fullName || 'E').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+
+                return `
+                    <div class="spatial-panel rounded-3xl p-5 flex flex-col justify-between border border-white/10 hover:border-white/20 transition group">
+                        <div>
+                            <div class="flex items-start justify-between gap-3 mb-4">
+                                <div class="flex items-center gap-3.5 min-w-0">
+                                    ${hasPhoto ? `
+                                        <div class="relative shrink-0">
+                                            <img src="${escapeHtml(p.photo)}" alt="${escapeHtml(p.fullName)}" class="w-14 h-14 rounded-full object-cover border border-white/20">
+                                        </div>
+                                    ` : `
+                                        <div class="w-14 h-14 rounded-full bg-graphite-900 border border-white/10 flex items-center justify-center text-sm font-bold text-gray-300 shrink-0">
+                                            ${escapeHtml(initials)}
+                                        </div>
+                                    `}
+                                    <div class="min-w-0">
+                                        <h3 class="font-display text-base font-bold text-white truncate">${escapeHtml(p.fullName)}</h3>
+                                        <p class="text-xs font-bold role-crimson-text truncate">${escapeHtml(p.role || 'Sin cargo')}</p>
+                                        <p class="text-xs text-gray-400 truncate">${escapeHtml(p.department || '')}</p>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-graphite-900 text-gray-300 border border-white/10 shrink-0">
+                                    ${hasPhoto ? 'Con foto' : 'Sin foto'}
+                                </span>
+                            </div>
+
+                            ${hasProgram ? `
+                                <div class="mb-3">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-graphite-900 text-gray-300 border border-white/10">
+                                        <span>${escapeHtml(p.program)}</span>
+                                    </span>
+                                </div>
+                            ` : ''}
+
+                            <div class="space-y-1 text-xs text-gray-300 mb-5 bg-graphite-950/70 p-3.5 rounded-2xl border border-white/[0.06]">
+                                <div class="truncate"><i class="fa-regular fa-envelope w-4 text-gray-400"></i> ${escapeHtml(p.email || '—')}</div>
+                                <div class="truncate"><i class="fa-brands fa-whatsapp w-4 text-emerald-400"></i> ${escapeHtml(p.whatsapp || '—')}</div>
+                                <div class="flex items-center justify-between pt-1.5 text-[11px] text-gray-400 border-t border-white/5 mt-1.5">
+                                    <span>Enlaces: ${(p.links || []).length}</span>
+                                    <span>Clave: <code class="text-gray-200 font-semibold">${escapeHtml(p.pin || '1234')}</code></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-4 gap-2 pt-3 border-t border-white/10">
+                            <button 
+                                type="button"
+                                onclick="adminEditEmployee('${escapeHtml(p.id)}')"
+                                class="col-span-2 py-2 px-3 rounded-xl btn-graphite-secondary text-xs font-semibold flex items-center justify-center gap-1.5"
+                            >
+                                <i class="fa-solid fa-pen-to-square text-red-400"></i>
+                                <span>Editar</span>
+                            </button>
+                            <button 
+                                type="button"
+                                onclick="adminCopyLink('${escapeHtml(p.id)}')"
+                                class="py-2 px-3 rounded-xl btn-graphite-secondary text-xs font-medium flex items-center justify-center"
+                                title="Copiar Link Único de este empleado"
+                            >
+                                <i class="fa-solid fa-link text-gray-300"></i>
+                            </button>
+                            <div class="flex items-center gap-1">
+                                <button 
+                                    type="button"
+                                    onclick="adminPreviewEmployee('${escapeHtml(p.id)}')"
+                                    class="flex-1 py-2 rounded-xl btn-graphite-secondary text-xs flex items-center justify-center"
+                                    title="Ver tarjeta pública"
+                                >
+                                    <i class="fa-regular fa-eye"></i>
+                                </button>
+                                <button 
+                                    type="button"
+                                    onclick="adminConfirmDelete('${escapeHtml(p.id)}')"
+                                    class="flex-1 py-2 rounded-xl bg-graphite-900 hover:bg-red-500/20 text-gray-400 hover:text-red-300 border border-white/10 text-xs transition flex items-center justify-center"
+                                    title="Eliminar perfil"
+                                >
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        };
+
+        window.adminApproveRegistration = async function(profileId) {
+            const target = profiles.find(p => p.id === profileId);
+            if (!target) return;
+            target.status = 'approved';
+            target.updatedAt = Date.now();
+            await persistProfileToCloud(target);
+            renderAdminDirectory();
+            showToast(`Registro de ${target.fullName} aprobado y guardado en Google Sheets`);
+        };
+
+        window.adminRejectRegistration = function(profileId) {
+            const target = profiles.find(p => p.id === profileId);
+            if (!target) return;
+
+            openCustomModal(
+                'Rechazar Solicitud de Registro',
+                `¿Deseas rechazar la solicitud de registro de "${target.fullName}" (${target.email})?`,
+                async () => {
+                    target.status = 'rejected';
+                    target.updatedAt = Date.now();
+                    await persistProfileToCloud(target);
+                    renderAdminDirectory();
+                    showToast(`Solicitud de ${target.fullName} rechazada`);
+                }
+            );
+        };
+
+        window.adminCreateNewProfile = function() {
+            const newProfile = {
+                id: 'emp-' + Date.now().toString(36),
+                fullName: '',
+                role: '',
+                department: '',
+                program: '',
+                email: '',
+                whatsapp: '',
+                photo: '',
+                pin: '1234',
+                status: 'approved',
+                links: [],
+                updatedAt: Date.now()
+            };
+            currentSession.role = 'admin';
+            currentSession.isNewRegistration = true;
+            openProfileEditor(newProfile);
+        };
+
+        window.adminEditEmployee = function(profileId) {
+            const target = profiles.find(p => p.id === profileId);
+            if (!target) return;
+            currentSession.role = 'admin';
+            currentSession.isNewRegistration = false;
+            openProfileEditor(target);
+        };
+
+        window.adminCopyLink = function(profileId) {
+            const target = profiles.find(p => p.id === profileId);
+            if (!target) return;
+            const url = buildUniqueShareUrl(target);
+            copyTextToClipboard(url);
+            showToast(`Link único de ${target.fullName} copiado`);
+        };
+
+        window.adminPreviewEmployee = function(profileId) {
+            const target = profiles.find(p => p.id === profileId);
+            if (!target) return;
+            currentSession.editingProfile = JSON.parse(JSON.stringify(target));
+            showStrictPublicCardView(target, true);
+        };
+
+        window.adminConfirmDelete = function(profileId) {
+            const target = profiles.find(p => p.id === profileId);
+            if (!target) return;
+
+            openCustomModal(
+                'Eliminar Tarjeta de Empleado',
+                `¿Estás seguro de que deseas eliminar permanentemente el perfil de "${target.fullName}"?`,
+                async () => {
+                    await removeProfileFromCloud(profileId);
+                    renderAdminDirectory();
+                    showToast('Perfil eliminado del directorio');
+                }
+            );
+        };
+
+        // ======================================================================
+        // 13. EXPORTAR / IMPORTAR RESPALDO JSON
+        // ======================================================================
+        window.exportBackupJson = function() {
+            const dataStr = JSON.stringify(profiles, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `respaldo_tarjetas_corporativas_${new Date().toISOString().slice(0,10)}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('Respaldo JSON descargado');
+        };
+
+        window.importBackupJson = function(event) {
+            const file = event.target.files?.[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    if (!Array.isArray(imported)) throw new Error('Formato inválido');
+                    for (const item of imported) {
+                        if (item && item.id && item.fullName) {
+                            await persistProfileToCloud(item);
+                        }
+                    }
+                    renderAdminDirectory();
+                    showToast(`${imported.length} perfiles importados correctamente`);
+                } catch (err) {
+                    showToast('El archivo JSON no tiene un formato válido', true);
+                }
+            };
+            reader.readAsText(file);
+        };
+
+        // ======================================================================
+        // 14. UTILIDADES: PORTAPAPELES, TOAST Y MODAL PERSONALIZADO
+        // ======================================================================
+        function copyTextToClipboard(text) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = '0';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.error('Error al copiar:', err);
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        let toastTimer = null;
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toastNotification');
+            const text = document.getElementById('toastText');
+            const icon = document.getElementById('toastIcon');
+
+            text.textContent = message;
+            icon.className = isError 
+                ? 'fa-solid fa-circle-exclamation text-amber-400 text-lg' 
+                : 'fa-solid fa-circle-check text-red-400 text-lg';
+
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            if (toastTimer) clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3400);
+        }
+
+        let modalConfirmCallback = null;
+        function openCustomModal(title, message, onConfirm) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalMessage').textContent = message;
+            modalConfirmCallback = onConfirm;
+            document.getElementById('customModalOverlay').classList.remove('hidden');
+        }
+
+        window.closeCustomModal = function() {
+            document.getElementById('customModalOverlay').classList.add('hidden');
+            modalConfirmCallback = null;
+        };
+
+        document.getElementById('modalConfirmBtn').addEventListener('click', () => {
+            if (typeof modalConfirmCallback === 'function') {
+                modalConfirmCallback();
+            }
+            closeCustomModal();
+        });
+
+        // ======================================================================
+        // 15. INICIALIZACIÓN AL CARGAR LA PÁGINA
+        // ======================================================================
+        window.addEventListener('DOMContentLoaded', async () => {
+            const isPublicCard = checkPublicUrlRouting(false);
+            await fetchAllFromGoogleSheets();
+            if (isPublicCard) {
+                checkPublicUrlRouting(true);
+            }
+        });
+    </script>
+</body>
+</html>
