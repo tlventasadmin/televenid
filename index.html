@@ -601,6 +601,7 @@
                         </div>
                         <button 
                             type="submit" 
+                            id="btnAdminLoginSubmit"
                             class="btn-executive-primary w-full py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2"
                         >
                             <i class="fa-solid fa-unlock-keyhole"></i>
@@ -1465,7 +1466,6 @@
             btn.disabled = true;
             btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i><span>Verificando en el servidor...</span>`;
 
-            // Sincronizar con Google Sheets primero para tener la lista más reciente
             await fetchAllFromGoogleSheets();
 
             const foundProfile = profiles.find(p => (p.email || '').trim().toLowerCase() === emailInput);
@@ -1768,7 +1768,6 @@
 
         function buildUniqueShareUrl(profile) {
             const baseUrl = window.location.origin + window.location.pathname;
-            // Si está conectado a Google Sheets, el link es corto y permanente (?card=id)
             if (getActiveGoogleScriptUrl()) {
                 return `${baseUrl}?card=${encodeURIComponent(profile.id)}`;
             }
@@ -1954,7 +1953,7 @@
         };
 
         // ======================================================================
-        // 8. AUTENTICACIÓN: EMPLEADO Y ADMINISTRADOR GENERAL
+        // 8. AUTENTICACIÓN: EMPLEADO Y ADMINISTRADOR GENERAL (DESDE EL SERVIDOR)
         // ======================================================================
         window.switchAuthTab = function(tab) {
             const tabEmp = document.getElementById('tabEmployeeAuth');
@@ -2102,9 +2101,50 @@
 
         window.handleAdminLogin = async function(e) {
             e.preventDefault();
-            const user = (document.getElementById('adminUsernameInput')?.value || '').trim().toLowerCase();
-            const pass = document.getElementById('adminPasswordInput').value.trim();
-            if (user !== 'admin' || pass !== 'admin2026') {
+            const user = (document.getElementById('adminUsernameInput')?.value || '').trim();
+            const pass = (document.getElementById('adminPasswordInput')?.value || '').trim();
+
+            const btn = document.getElementById('btnAdminLoginSubmit');
+            const originalHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i><span>Validando con el servidor...</span>`;
+
+            const scriptUrl = getActiveGoogleScriptUrl();
+            let isAuthorized = false;
+
+            if (scriptUrl) {
+                try {
+                    const response = await fetch(scriptUrl, {
+                        method: 'POST',
+                        redirect: 'follow',
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify({
+                            action: 'verifyAdmin',
+                            username: user,
+                            password: pass
+                        })
+                    });
+                    const resJson = await response.json();
+                    if (resJson && resJson.valid === true) {
+                        isAuthorized = true;
+                    }
+                } catch (err) {
+                    console.warn('Error validando administrador en Google Sheets:', err);
+                    btn.disabled = false;
+                    btn.innerHTML = originalHtml;
+                    showToast('No se pudo conectar con el servidor Google Sheets', true);
+                    return;
+                }
+            } else {
+                // Modo local de respaldo solo si aún no se ha conectado Google Sheets
+                if (user.toLowerCase() === 'admin' && pass === 'admin2026') {
+                    isAuthorized = true;
+                }
+            }
+
+            if (!isAuthorized) {
+                btn.disabled = false;
+                btn.innerHTML = originalHtml;
                 showToast('Usuario o contraseña de administrador incorrectos', true);
                 return;
             }
@@ -2112,6 +2152,10 @@
             currentSession.role = 'admin';
             currentSession.employeeId = null;
             await fetchAllFromGoogleSheets();
+
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+
             renderAdminDirectory();
             showView('viewAdminDashboard');
             showToast('Sesión iniciada como Administrador General');
@@ -2197,7 +2241,6 @@
                 const img = new Image();
                 img.onload = function() {
                     const canvas = document.createElement('canvas');
-                    // 260x260 garantiza que la foto quepa dentro de una celda de Google Sheets (< 45,000 caracteres)
                     const maxDim = 260;
                     const minSide = Math.min(img.width, img.height);
                     const sx = (img.width - minSide) / 2;
